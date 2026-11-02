@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florianópolis · Emissions and climate goals</title>
+  <meta name="description" content="An open-source tracker for citizens to see Florianópolis's real emissions data, local impact and progress toward global climate targets.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23315C4B'/%3E%3Cpath d='M12 38c8-8 14 8 22 0s10 2 18-6' fill='none' stroke='%23F3EEE5' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='44' cy='21' r='6' fill='%23D9A441'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#overview" aria-label="Florianópolis Climate, back to top" data-i18n-aria="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="19" fill="#315C4B"/>
+            <circle cx="27" cy="13" r="4.5" fill="#D9A441"/>
+            <path d="M7 24c5-5.5 8.6 5 13.4 0s6.4 1.5 12.6-4" stroke="#F3EEE5" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M8 29c4.6-4.4 8 4.2 12.4 0s6 1.2 11.4-3.3" stroke="#F3EEE5" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Florianópolis</strong>
+          <span>Emissions and climate goals</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Sections" data-i18n-aria="nav">
+        <a href="#emissions" data-nav="emissions">Emissions</a>
+        <a href="#mobility" data-nav="mobility">Getting around</a>
+        <a href="#flood" data-nav="flood">Flood risk</a>
+        <a href="#action" data-nav="action">City action</a>
+        <a href="#methodology" data-nav="methodology">Data</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="language-switcher">
+          <select id="language-select" aria-label="Language" data-i18n-aria="language">
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+            <option value="es">Español</option>
+          </select>
+          <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" id="overview">
+      <div class="hero-copy reveal">
+        <h1 data-i18n-html="heroTitle">Understanding Florianópolis's <span class="highlight">emissions and climate goals</span>.</h1>
+        <p class="lede">An initiative for you to follow real data, the risks in your neighborhood and Florianópolis's progress toward global goals.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#flood">
+            Check your neighborhood
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M5 12h14m0 0-5-5m5 5-5 5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-visual reveal" aria-label="Key questions" data-i18n-aria="shortAnswers">
+        <div class="answer-card">
+          <p class="answer-card-intro">Three important questions and what the data shows.</p>
+
+          <div class="answer-list">
+            <a class="answer-item" href="#emissions">
+              <span class="answer-dot dot-bad" aria-hidden="true"></span>
+              <span class="answer-question">Are emissions falling?</span>
+              <strong class="answer-value">No. Emissions excluding land-use change up 21.7% since 2010.</strong>
+              <span class="answer-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="answer-item" href="#mobility">
+              <span class="answer-dot dot-warn" aria-hidden="true"></span>
+              <span class="answer-question">Is cycling getting safer?</span>
+              <strong class="answer-value">Not yet. 27 collisions in 2024.</strong>
+              <span class="answer-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="answer-item" href="#flood">
+              <span class="answer-dot dot-bad" aria-hidden="true"></span>
+              <span class="answer-question">Will my neighborhood flood?</span>
+              <strong class="answer-value">22% of households are exposed.</strong>
+              <span class="answer-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="story-section shell reveal" id="emissions" data-question="emissions">
+      <div class="story-head">
+        <h2 data-i18n-html="emissionsTitle">Is the city cutting emissions?</h2>
+        <span class="status-pill status-off-track">Off track</span>
+      </div>
+
+      <div class="story-grid">
+        <article class="story-copy emissions-card">
+          <div class="emissions-hero">
+            <div class="emissions-hero-head">
+              <p class="story-kicker">What the data says <span class="term-help term-help-center" tabindex="0" data-i18n-tooltip="emissionsDefinition" data-i18n-aria="moreInfo">i</span></p>
+              <span class="chart-tag">2024</span>
+            </div>
+            <div class="emissions-hero-row">
+              <strong class="hero-metric">839.1k t</strong>
+              <span class="hero-caption">emitted in 2024, excluding land-use change</span>
+            </div>
+          </div>
+          <div class="context-grid">
+            <div>
+              <strong>+21.7%</strong>
+              <span>increase since 2010</span>
+            </div>
+            <div>
+              <strong>68%</strong>
+              <span>from transport</span>
+            </div>
+          </div>
+          <div class="emissions-donut">
+            <div class="emissions-donut-head">
+              <p class="micro-label">Where emissions come from</p>
+              <h3>Transport dominates</h3>
+              <p class="chart-subtitle">Cutting emissions means changing how people and goods move.</p>
+            </div>
+            <div class="chart-wrap chart-donut">
+              <canvas id="emissionsMix" role="img" aria-label="Doughnut chart of emissions excluding land-use change: transport 68.1%, waste 24.6%, buildings and other 5.1%, agriculture 2.2%."></canvas>
+              <div class="donut-center"><strong>839k t</strong><span>CO₂e</span></div>
+            </div>
+            <div class="legend" aria-hidden="true">
+              <span><i style="--c:#B65C3F"></i>Transport <b>68.1%</b></span>
+              <span><i style="--c:#C97B52"></i>Waste <b>24.6%</b></span>
+              <span><i style="--c:#DFAE7C"></i>Buildings &amp; other <b>5.1%</b></span>
+              <span><i style="--c:#E6CE9F"></i>Agriculture <b>2.2%</b></span>
+            </div>
+          </div>
+          <p class="card-source">
+            <span class="card-source-label">Source</span>
+            <a href="https://seeg.eco.br/dados/" target="_blank" rel="noopener">SEEG 13.0</a>
+          </p>
+        </article>
+
+        <figure class="chart-card">
+          <div class="chart-head">
+            <div>
+              <p class="micro-label">2010 → 2050</p>
+              <h3>Up in the last 4 years</h3>
+            </div>
+            <span class="chart-tag">2024</span>
+          </div>
+          <div class="chart-wrap chart-line">
+            <canvas id="emissionsTrend" role="img" aria-label="Line chart: emissions excluding land-use change rose from 689,481 tonnes in 2010 to 839,121 tonnes in 2024. A net-zero pathway to 2050 is shown."></canvas>
+            <span class="emissions-pulse" id="emissions-pulse" aria-hidden="true"></span>
+          </div>
+          <div class="legend legend-inline" aria-hidden="true">
+            <span><i class="legend-line" style="--c:#B65C3F"></i>Actual</span>
+            <span><i class="legend-dash" style="--c:#5F675E"></i>Net-zero pathway</span>
+          </div>
+          <figcaption>
+            <span data-i18n-html="emissionsTrendCaption">Annual emissions excluding land-use change and the net-zero pathway to 2050.</span>
+            <span class="card-source">
+              <span class="card-source-label">Sources</span>
+              <a href="https://seeg.eco.br/dados/" target="_blank" rel="noopener">SEEG 13.0</a>
+              <span class="source-sep">·</span>
+              <a href="https://strapi.redeplanejamento.pmf.sc.gov.br/uploads/P3_Estrategia_de_Descarbonizacao_V02_20241018_a19a622991.pdf" target="_blank" rel="noopener">Decarbonisation strategy 2024</a>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <aside class="cta-block emissions-cta">
+        <h3 class="cta-title">Transport sets the pace of emissions</h3>
+        <p class="cta-sub">The sector accounts for 68% of our pollution. Demand a clear transition plan and open data from the city.</p>
+        <div class="cta-actions">
+          <div class="cta-buttons">
+            <a class="btn btn-cta" href="mailto:ouvidoria@pmf.sc.gov.br?subject=Cobran%C3%A7a%3A%20Plano%20de%20redu%C3%A7%C3%A3o%20de%20emiss%C3%B5es%20nos%20transportes">
+              Contact the Mobility Department
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="story-section shell reveal" id="mobility" data-question="mobility">
+      <div class="story-head">
+        <h2 data-i18n-html="mobilityTitle">Can you get around safely?</h2>
+        <span class="status-pill status-at-risk">At risk</span>
+      </div>
+
+      <div class="mobility-top">
+        <article class="story-copy mobility-hero">
+          <div class="mobility-hero-head">
+            <p class="story-kicker">What the data says</p>
+            <span class="chart-tag">2024</span>
+          </div>
+          <div class="mobility-hero-body">
+            <strong class="shock-metric">+440%</strong>
+            <p class="shock-caption"><strong>Increase in cyclist collisions</strong><span>from 5 in 2023 to 27 collisions in 2024</span></p>
+          </div>
+          <p class="card-source">
+            <span class="card-source-label">Source</span>
+            <a href="https://observatoriodabicicleta.org.br/atropelamentos-de-ciclistas-disparam-mais-de-400-em-florianopolis-em-apenas-um-ano/" target="_blank" rel="noopener">Cyclist collision survey</a>
+          </p>
+        </article>
+
+        <figure class="chart-card">
+          <div class="chart-head">
+            <div>
+              <p class="micro-label">Cyclist collisions</p>
+              <h3>Safety has not kept pace</h3>
+            </div>
+            <span class="chart-tag">2023 → 2024</span>
+          </div>
+          <div class="chart-wrap chart-bar">
+            <canvas id="collisionsChart" role="img" aria-label="Bar chart of cyclist collisions: 5 in 2023 and 27 in 2024."></canvas>
+          </div>
+          <figcaption>
+            <span data-i18n-html="collisionsCaption">Counts are preliminary and underreported.</span>
+            <span class="card-source">
+              <span class="card-source-label">Source</span>
+              <a href="https://observatoriodabicicleta.org.br/atropelamentos-de-ciclistas-disparam-mais-de-400-em-florianopolis-em-apenas-um-ano/" target="_blank" rel="noopener">Cyclist collision survey</a>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="chart-card">
+          <div class="chart-head">
+            <div>
+              <p class="micro-label">Mobility spending</p>
+              <h3>A smaller budget share</h3>
+            </div>
+            <span class="chart-tag">2015 → 2023</span>
+          </div>
+          <div class="chart-wrap chart-bar">
+            <canvas id="mobilitySpendChart" role="img" aria-label="Bar chart of mobility spending as a share of municipal spending: 2.34% in 2015 and 1.41% in 2023."></canvas>
+          </div>
+          <figcaption>
+            <span class="card-source">
+              <span class="card-source-label">Source</span>
+              <a href="https://www.bndes.gov.br/arquivos/fep-mobilidade-urbana/relatorios-diagnostico/relatorio-Florianopolis-vol-1.pdf" target="_blank" rel="noopener">BNDES mobility study</a>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="mobility-bottom">
+        <figure class="chart-card bike-split-card">
+          <div class="chart-head">
+            <div>
+              <p class="micro-label">Cycling network</p>
+              <h3>Safe vs shared infrastructure</h3>
+            </div>
+            <span class="chart-tag">2026</span>
+          </div>
+          <div class="bike-split">
+            <div class="bike-split-total">
+              <strong id="bike-total">276.55 km</strong>
+              <span>total network</span>
+            </div>
+            <div class="bike-split-main">
+              <div class="bike-split-bar-wrap">
+                <span class="bike-split-goal">350 km · 2025</span>
+                <div class="bike-split-bar" id="bike-split-bar" role="img" aria-label="Cycling infrastructure: 174.7 km protected, 101.9 km shared and 73.45 km to the 350 km plan.">
+                  <span class="bike-split-safe" id="bike-safe-bar" style="width:49.9%"><span class="bike-seg-label" id="bike-safe-label">174.7 km</span></span>
+                  <span class="bike-split-shared" id="bike-shared-bar" style="width:29.1%"><span class="bike-seg-label" id="bike-shared-label">101.9 km</span></span>
+                  <span class="bike-split-gap" id="bike-gap-bar" style="width:21.0%"><span class="bike-seg-label" id="bike-gap-label">73.45 km</span></span>
+                </div>
+                <span class="bike-split-goal-marker" aria-hidden="true"></span>
+              </div>
+              <div class="bike-split-legend" id="bike-split-legend">
+                <span>
+                  <i class="safe" aria-hidden="true"></i>
+                  <span>Protected</span>
+                </span>
+                <span>
+                  <i class="shared" aria-hidden="true"></i>
+                  <span>Shared</span>
+                </span>
+                <span>
+                  <i class="gap" aria-hidden="true"></i>
+                  <span id="bike-gap-legend">Not built</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <span data-i18n-html="bikeSplitCaption">Protected: ciclovias and ciclofaixas. Shared: ciclorrotas and shared spaces.</span>
+            <span class="card-source">
+              <span class="card-source-label">Sources</span>
+              <a href="https://redeplanejamento.pmf.sc.gov.br/pt-BR/programas/mais-pedal" target="_blank" rel="noopener">+Pedal programme</a>
+              <span class="source-sep">·</span>
+              <a href="https://www.mobilize.org.br/noticias/9038/florianopolis-tera-350-km-de-ciclovias-em-dez-anos-preve-plano.html" target="_blank" rel="noopener">Mobilize 2015</a>
+            </span>
+          </figcaption>
+        </figure>
+
+        <aside class="chart-card mobility-cta-card">
+          <div class="mobility-cta-copy">
+            <h3>Join those who defend cyclists</h3>
+            <p>A nonprofit organization that promotes the bicycle as transport, leisure and tourism in Florianópolis, demanding safe infrastructure.</p>
+          </div>
+          <a class="btn btn-cta" href="https://amobici.org/" target="_blank" rel="noopener">
+            Support Amobici
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg>
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="story-section shell reveal" id="flood" data-question="flood">
+      <div class="story-head">
+        <h2 data-i18n-html="floodTitle">Will your neighborhood flood?</h2>
+        <span class="status-pill status-off-track">Off track</span>
+      </div>
+      <div class="flood-summary">
+        <div>
+          <span class="flood-summary-label">Neighborhoods at high risk</span>
+          <strong>9<span class="flood-summary-sub">/ 56</span></strong>
+        </div>
+        <div>
+          <div class="flood-summary-head">
+            <span class="flood-summary-label">Plan update</span>
+            <span class="status-pill status-at-risk">Outdated</span>
+          </div>
+          <strong class="term-value" tabindex="0" data-i18n-tooltip="planRevision">12 years</strong>
+        </div>
+        <div>
+          <span class="flood-summary-label">Prevention Plan</span>
+          <strong class="term-value" tabindex="0" data-i18n-tooltip="hydrologicalAlert">0</strong>
+        </div>
+        <div>
+          <span class="flood-summary-label">Areas exposed to flooding</span>
+          <strong>22.1%</strong>
+        </div>
+        <p class="card-source flood-summary-source">
+          <span class="card-source-label">Sources</span>
+          <a href="https://www.aguaesaneamento.org.br/municipios-e-saneamento/sc/florianopolis" target="_blank" rel="noopener">SINISA / Instituto Água e Saneamento</a>
+          <span class="source-sep">·</span>
+          <a href="https://geoportal.pmf.sc.gov.br/map" target="_blank" rel="noopener">City GeoPortal — flood-prone areas</a>
+          <span class="source-sep">·</span>
+          <a href="https://redeplanejamento.pmf.sc.gov.br/pt-BR/planos/plano-municipal-de-reducao-de-riscos" target="_blank" rel="noopener">Municipal Risk Reduction Plan</a>
+        </p>
+      </div>
+      <div class="nb-ranking-card">
+        <div class="nb-ranking-head">
+          <div>
+            <p class="micro-label">Most residents exposed</p>
+            <h3>Where the flood risk meets the most people</h3>
+          </div>
+          <span class="chart-tag">Estimated residents</span>
+        </div>
+        <div class="rank-chart">
+          <div class="nb-ranking" id="nb-ranking"></div>
+          <div class="rank-axis" aria-hidden="true">
+            <span class="rank-axis-spacer"></span>
+            <span class="rank-axis-scale" id="nb-ranking-axis"></span>
+            <span class="rank-axis-spacer"></span>
+          </div>
+        </div>
+        <p class="card-source">
+          <span class="card-source-label">Sources</span>
+          <a href="https://geoportal.pmf.sc.gov.br/map" target="_blank" rel="noopener">City GeoPortal — flood-prone areas</a>
+          <span class="source-sep">·</span>
+          <a href="https://www.ibge.gov.br/cidades-e-estados/sc/florianopolis.html" target="_blank" rel="noopener">IBGE Cidades</a>
+        </p>
+      </div>
+      <div class="flood-explorer">
+        <div class="map-card">
+          <div class="map-head">
+            <div>
+              <p class="micro-label">Flood-prone areas</p>
+              <h3>Click a neighborhood</h3>
+            </div>
+            <label class="neighborhood-select">
+              <span class="sr-only">Choose a neighborhood</span>
+              <select id="neighborhood-select" aria-label="Choose a neighborhood" data-i18n-aria="chooseNeighborhood"></select>
+              <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </label>
+          </div>
+
+          <div class="map-frame" id="map-frame">
+            <svg id="flood-map" class="flood-map" role="group" aria-label="Map of Florianópolis neighborhoods colored by share of area in flood-prone zones." data-i18n-aria="map"></svg>
+            <div class="map-tooltip" id="map-tooltip" hidden></div>
+            <div class="map-legend" aria-hidden="true">
+              <span><i style="--c:#E9E0CD"></i>&lt;2%</span>
+              <span><i style="--c:#E6CE9F"></i>2–5%</span>
+              <span><i style="--c:#DFAE7C"></i>5–15%</span>
+              <span><i style="--c:#C97B52"></i>15–30%</span>
+              <span><i style="--c:#A94832"></i>&gt;30%</span>
+            </div>
+          </div>
+          <p class="map-note">Color shows the share of each neighborhood mapped as flood-prone (coastal and riverine). Neighborhood estimates use the mapped flood layer and may differ from the citywide household survey. The map is schematic; use the city GeoPortal for property-level checks.</p>
+          <p class="card-source">
+            <span class="card-source-label">Sources</span>
+            <a href="https://geoportal.pmf.sc.gov.br/map" target="_blank" rel="noopener">City GeoPortal — flood-prone areas</a>
+            <span class="source-sep">·</span>
+            <a href="https://florianopolis-geoportal.geowise.com.br/downloads" target="_blank" rel="noopener">GeoPortal — PMRR risk sectors</a>
+            <span class="source-sep">·</span>
+            <a href="https://redeplanejamento.pmf.sc.gov.br/pt-BR/planos/plano-municipal-de-reducao-de-riscos" target="_blank" rel="noopener">Municipal Risk Reduction Plan</a>
+          </p>
+        </div>
+        <div class="flood-right">
+        <aside class="nb-panel" aria-live="polite">
+          <p class="micro-label">Selected neighborhood</p>
+          <h3 id="nb-name">—</h3>
+          <p class="nb-region" id="nb-region">—</p>
+          <p class="nb-context" id="nb-context">Choose a neighborhood on the map or in the menu.</p>
+          <div class="nb-stats">
+            <div><strong id="nb-pct">—</strong><span>of neighborhood in flood-prone areas</span></div>
+            <div><strong id="nb-pop">—</strong><span>residents in those areas (2022 estimate)</span></div>
+            <div><strong id="nb-area">—</strong><span>mapped flood-prone land</span></div>
+            <div><strong id="nb-pmrr">—</strong><span class="term-label" tabindex="0" data-i18n-tooltip="pmrr">in PMRR risk sectors (2014)</span></div>
+            <div><strong id="nb-high">—</strong><span class="term-label" tabindex="0" data-i18n-tooltip="pmrrHigh">high or very high PMRR risk (2014)</span></div>
+            <div><strong id="nb-rank">—</strong><span>rank by residents exposed</span></div>
+          </div>
+          <div class="nb-actions">
+            <a class="text-link" href="https://geoportal.pmf.sc.gov.br/map" target="_blank" rel="noopener">Check your address on the city GeoPortal →</a>
+          </div>
+          <p class="card-source">
+            <span class="card-source-label">Sources</span>
+            <a href="https://geoportal.pmf.sc.gov.br/map" target="_blank" rel="noopener">City GeoPortal — flood-prone areas</a>
+            <span class="source-sep">·</span>
+            <a href="https://florianopolis-geoportal.geowise.com.br/downloads" target="_blank" rel="noopener">GeoPortal — PMRR risk sectors</a>
+          </p>
+        </aside>
+        </div>
+        <aside class="flood-cta-card">
+          <h3>Help get the prevention plan off the shelf.</h3>
+          <p>The risk plan appears to have been under revision since 2024, as we could not find updated data. There are no flood alert systems, nor a drainage master plan.</p>
+          <div class="cta-buttons">
+            <a class="btn btn-cta" href="mailto:defesacivil@pmf.sc.gov.br">
+              Demand progress on the revision
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg>
+            </a>
+            <a class="btn btn-outline" href="https://falabr.cgu.gov.br/web/SC/Florianopolis" target="_blank" rel="noopener">Formal record via the ombudsman</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="story-section shell reveal" id="action" data-question="action">
+      <div class="story-head">
+        <h2 data-i18n-html="actionTitle">What else is the city doing?</h2>
+      </div>
+
+      <div class="more-grid">
+        <article class="more-card more-card-waste">
+          <div class="more-top">
+            <span class="micro-label">Total waste recovery · recycled + composted</span>
+            <span class="status-pill status-off-track">Off track</span>
+          </div>
+          <strong class="more-value waste-value">15.5%</strong>
+          <p class="more-copy">total recovery in 2025</p>
+          <div class="waste-chart" role="img" aria-label="Total waste recovery, recycled and composted share of all collected waste: 8.5% in 2022 and 15.5% in 2025. The 2030 target for dry recyclables is 60%." data-i18n-aria="wasteChart">
+            <div class="waste-chart-body" aria-hidden="true">
+              <div class="waste-chart-labels">
+                <span>2022</span>
+                <span>2025</span>
+                <span>2030</span>
+              </div>
+              <div class="waste-chart-plot">
+                <div class="waste-chart-grid">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="waste-chart-row">
+                  <span class="waste-chart-bar waste-chart-bar-base" style="--w:14.2%"><span class="waste-chart-bar-value">8.5%</span></span>
+                </div>
+                <div class="waste-chart-row">
+                  <span class="waste-chart-bar" style="--w:25.8%"><span class="waste-chart-bar-value">15.5%</span></span>
+                </div>
+                <div class="waste-chart-row">
+                  <span class="waste-chart-bar waste-chart-bar-goal" style="--w:100%"><span class="waste-chart-bar-value waste-chart-bar-value-goal">Target 60%</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="waste-chart-axis" aria-hidden="true">
+              <span></span>
+              <div class="waste-chart-axis-scale">
+                <span>0%</span>
+                <span>15%</span>
+                <span>30%</span>
+                <span>45%</span>
+                <span>60%</span>
+              </div>
+              <span></span>
+            </div>
+          </div>
+          <p class="waste-chart-note" data-i18n-html="wasteNote">Recovery is the share of all collected waste that is recycled or composted. The 60% target applies to dry recyclables only — it counts against a different total, so it is a reference line, not the goal for these bars.</p>
+          <p class="card-source">
+            <span class="card-source-label">Sources</span>
+            <a href="https://www.imagemdailha.com.br/noticias/cidade/floripa-entra-no-seleto-grupo-lixo-zero.html" target="_blank" rel="noopener">PMF 2025 data</a>
+            <span class="source-sep">·</span>
+            <a href="https://strapi.redeplanejamento.pmf.sc.gov.br/uploads/P2_R1_Inventario_Cenarios_e_Metas_2024_v05_20241004_ae6887db3b.pdf" target="_blank" rel="noopener">GHG inventory 2022</a>
+            <span class="source-sep">·</span>
+            <a href="https://www.pmf.sc.gov.br/servicos/index.php?id=260&amp;pagina=servpagina" target="_blank" rel="noopener">Lixo Zero programme</a>
+          </p>
+        </article>
+
+        <article class="more-card more-card-adaptation">
+          <div class="more-top">
+            <span class="micro-label">Money for prevention</span>
+            <span class="status-pill status-on-track">On track</span>
+          </div>
+          <strong class="more-value">R$ 92.4M</strong>
+          <p class="more-copy">Planned for 2026 to protect the city.</p>
+          <div class="bento" role="img" aria-label="Adaptation spending share: drainage and stormwater 39%, slope risk 18%, coastal protection 13%, other adaptation 30%." data-i18n-aria="stackChart">
+            <div class="bento-col" style="--grow:57">
+              <div class="bento-tile" style="--grow:39;--c:#A84E33;--fg:#F7F1E6" data-i18n-tooltip="adaptationDrainage">
+                <span class="bento-label">Drainage and stormwater</span>
+                <span class="bento-value">39%</span>
+              </div>
+              <div class="bento-tile" style="--grow:18;--c:#C97B52" data-i18n-tooltip="adaptationSlope">
+                <span class="bento-label">Slope risk</span>
+                <span class="bento-value">18%</span>
+              </div>
+            </div>
+            <div class="bento-col" style="--grow:43">
+              <div class="bento-tile" style="--grow:30;--c:#E6CE9F" data-i18n-tooltip="adaptationOther">
+                <span class="bento-label">Other adaptation</span>
+                <span class="bento-value">30%</span>
+              </div>
+              <div class="bento-tile" style="--grow:13;--c:#DFAE7C" data-i18n-tooltip="adaptationCoastal">
+                <span class="bento-label">Coastal protection</span>
+                <span class="bento-value">13%</span>
+              </div>
+            </div>
+          </div>
+          <a class="text-link" href="https://www.pmf.sc.gov.br/transparencia/" target="_blank" rel="noopener">Transparency portal →</a>
+        </article>
+      </div>
+
+
+    </section>
+
+    <section class="method-section shell" id="methodology">
+      <div class="method-card reveal">
+        <div class="method-head">
+          <h2>Where does the data come from?</h2>
+          <p>We use official data, validated research and transparent modeling when public information is incomplete. Because we cross several public databases, errors can happen.</p>
+          <a class="btn btn-report" href="https://forms.gle/38hkkr7nUmGjwsmu9" target="_blank" rel="noopener">
+            Report an error
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg>
+          </a>
+        </div>
+
+        <div class="method-grid">
+          <div class="method-column">
+            <h3>Emissions & mobility</h3>
+            <ul class="method-list">
+              <li>Climate data: SEEG 13.0 and the 2022 inventory.</li>
+              <li>Mobility: +Pedal, Amobici and BNDES.</li>
+            </ul>
+            <details class="method-disclosure">
+              <summary>Technical details</summary>
+              <p>Annual emissions come from SEEG 13.0; the chart uses gross emissions excluding land-use change, while net emissions include land-use emissions and removals. The 2022 city inventory is used as a cross-check, not mixed into the same trend. Cycling infrastructure comes from the city +Pedal programme; collision counts are preliminary Amobici data; spending shares come from the BNDES municipal finance analysis.</p>
+            </details>
+          </div>
+          <div class="method-column">
+            <h3>Neighborhood flood estimate</h3>
+            <ul class="method-list">
+              <li>We cross the city GeoPortal risk map with 2022 population.</li>
+              <li>It is an areal estimate, not a door-to-door count.</li>
+            </ul>
+            <details class="method-disclosure">
+              <summary>Technical details</summary>
+              <p>Flood-prone polygons and neighborhood boundaries come from the city GeoPortal. Residents in flood zones are estimated by overlaying the polygons on 2022 neighborhood population and assuming an even spread. It is an areal estimate, not a door-to-door count; use the GeoPortal for property-level checks.</p>
+            </details>
+          </div>
+          <div class="method-column">
+            <h3>What is modeled</h3>
+            <ul class="method-list">
+              <li>No climate-specific budget: values are estimated from general spending.</li>
+            </ul>
+            <details class="method-disclosure">
+              <summary>Technical details</summary>
+              <p>The adaptation budget envelope and its area split are modeled from municipal spending and plan priorities, because the city does not publish an adaptation-tagged budget. It is labeled wherever it appears.</p>
+            </details>
+          </div>
+        </div>
+
+        <div class="source-row source-row-method">
+          <span class="source-type source-mixed">Source library</span>
+          <a href="https://seeg.eco.br/dados/" target="_blank" rel="noopener">SEEG 13.0</a>
+          <a href="https://www.ibge.gov.br/cidades-e-estados/sc/florianopolis.html" target="_blank" rel="noopener">IBGE Cidades</a>
+          <a href="https://strapi.redeplanejamento.pmf.sc.gov.br/uploads/P2_R1_Inventario_Cenarios_e_Metas_2024_v05_20241004_ae6887db3b.pdf" target="_blank" rel="noopener">GHG inventory 2022</a>
+          <a href="https://geoportal.pmf.sc.gov.br/map" target="_blank" rel="noopener">City GeoPortal</a>
+          <a href="https://www.aguaesaneamento.org.br/municipios-e-saneamento/sc/florianopolis" target="_blank" rel="noopener">SINISA</a>
+          <a href="https://www.pmf.sc.gov.br/transparencia/" target="_blank" rel="noopener">Transparency portal</a>
+        </div>
+
+        <div class="method-foot">
+          <span>Florianópolis · 27°35′S 48°33′W</span>
+          <span>Population 537,211 (2022) · Area 674.844 km²</span>
+          <span>Data synced October 2026</span>
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <span class="brand-mark brand-mark-small" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" fill="#315C4B"/>
+              <circle cx="27" cy="13" r="4.5" fill="#D9A441"/>
+              <path d="M7 24c5-5.5 8.6 5 13.4 0s6.4 1.5 12.6-4" stroke="#F3EEE5" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span>Florianópolis · Emissions and climate goals</span>
+        </div>
+        <a class="back-to-top" href="#overview">Back to top ↑</a>
+      </footer>
+    </section>
+  </main>
+
+  <script src="vendor/chart.umd.min.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="flood-map.js" defer></script>
+  <script src="translations.js" defer></script>
+  <script src="app.js" defer></script>
+  <script>
+    (function () {
+      var local = /^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(location.hostname);
+      var forced = new URLSearchParams(location.search).has("agentation");
+      if (!local && !forced) return;
+      var script = document.createElement("script");
+      script.type = "module";
+      script.src = "tools/agentation.js";
+      document.body.appendChild(script);
+    })();
+  </script>
+</body>
+</html>
