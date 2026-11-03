@@ -960,6 +960,37 @@
     updateScrollChrome();
   };
 
+  const initWasteTabs = () => {
+    const tabs = Array.from(document.querySelectorAll("[data-waste-tab]"));
+    if (!tabs.length) return;
+    const panels = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")));
+
+    const activate = (activeIndex) => {
+      tabs.forEach((tab, index) => {
+        const active = index === activeIndex;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", String(active));
+        tab.tabIndex = active ? 0 : -1;
+        const panel = panels[index];
+        if (!panel) return;
+        panel.classList.toggle("is-active", active);
+        panel.hidden = !active;
+      });
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => activate(index));
+      tab.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        const offset = event.key === "ArrowRight" ? 1 : -1;
+        const nextIndex = (index + offset + tabs.length) % tabs.length;
+        activate(nextIndex);
+        tabs[nextIndex].focus();
+      });
+    });
+  };
+
   const initReveal = () => {
     const elements = document.querySelectorAll(".reveal");
     if (reduceMotion) {
@@ -988,6 +1019,7 @@
   }
   createCharts();
   initBikeSplit();
+  initWasteTabs();
   mapController = initMap();
   initReveal();
   initNav();

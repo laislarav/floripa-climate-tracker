@@ -13,7 +13,9 @@ window.I18N = {
       chooseNeighborhood: "Choose a neighborhood",
       moreInfo: "More information",
       stackChart: "Stacked bar of adaptation spending: drainage and stormwater 39%, slope risk 18%, coastal protection 13%, other 30%.",
-      wasteChart: "Total waste recovery, recycled and composted share of all collected waste: 8.5% in 2022 and 15.5% in 2025."
+      wasteChartOrg: "Organics diverted from landfill as a share of the organic fraction: 13.0% in 2023, 12.9% in 2024 and 14% in 2025. The 2030 target is 90%.",
+      wasteChartDry: "Dry recyclables recovered as a share of the dry-recyclable fraction: 10.3% in 2023 and 10.8% in 2024. The 2030 target is 60%.",
+      wasteTabs: "Waste fraction"
     },
     tooltips: {
       highRiskNeighborhoods: "Neighborhoods where more than 30% of the area is mapped as flood-prone — the highest category on the map below.",
@@ -88,7 +90,9 @@ window.I18N = {
       chooseNeighborhood: "Escolha um bairro",
       moreInfo: "Mais informações",
       stackChart: "Barra empilhada do gasto em adaptação: drenagem e águas pluviais 39%, risco de encosta 18%, proteção costeira 13% e outras ações 30%.",
-      wasteChart: "Recuperação total de resíduos, reciclados e compostados sobre todo o resíduo coletado: 8,5% em 2022 e 15,5% em 2025. A meta de 2030 para recicláveis secos é 60%."
+      wasteChartOrg: "Orgânicos desviados do aterro como fração dos resíduos orgânicos: 13,0% em 2023, 12,9% em 2024 e 14% em 2025. A meta de 2030 é 90%.",
+      wasteChartDry: "Recicláveis secos recuperados como fração dos recicláveis secos: 10,3% em 2023 e 10,8% em 2024. A meta de 2030 é 60%.",
+      wasteTabs: "Fração de resíduos"
     },
     tooltips: {
       highRiskNeighborhoods: "Bairros em que mais de 30% da área é mapeada como inundável — a categoria mais alta do mapa abaixo.",
@@ -341,6 +345,11 @@ window.I18N = {
       "Money for prevention": "Dinheiro para prevenção",
       "Planned for 2026 to protect the city.": "Previstos para 2026 para proteger a cidade.",
       "Goal 60%": "Meta 60%",
+      "Goal 90%": "Meta 90%",
+      "13.0%": "13,0%",
+      "12.9%": "12,9%",
+      "10.8%": "10,8%",
+      "10.3%": "10,3%",
       "Goal": "Meta",
       "Benchmark": "Parâmetro",
       "2.0% of city spending": "2,0% do gasto municipal",
@@ -376,7 +385,7 @@ window.I18N = {
       "City GeoPortal": "GeoPortal da cidade",
       "Transparency portal": "Portal da transparência",
       "Population 537,211 (2022) · Area 674.844 km²": "População 537.211 (2022) · Área 674,844 km²",
-      "Data synced October 2026": "Dados sincronizados em outubro de 2026",
+      "Data synced November 2026": "Dados sincronizados em novembro de 2026",
       "Florianópolis · Emissions and climate goals": "Florianópolis · Emissões e metas climáticas",
       "A citizen-facing prototype built from public data. Every claim links to its source.": "Um protótipo para o cidadão construído com dados públicos. Cada afirmação liga à sua fonte.",
       "Back to top ↑": "Voltar ao topo ↑",
@@ -426,8 +435,17 @@ window.I18N = {
       bikeSplitCaption: 'Protegidas: ciclovias e ciclofaixas. Partilhadas: ciclorrotas e espaços compartilhados.',
       spendCaption: 'O gasto em mobilidade caiu de <strong>2,34%</strong> para <strong>1,41%</strong> do gasto municipal. O total de 2023 é de cerca de R$ 50 milhões.',
       floodAnswer: '<strong>22,1% dos domicílios estão expostos.</strong> 66.208 domicílios (22,1%) estão em áreas sujeitas a inundação. A cidade <strong>não tem sistema de alerta hidrológico</strong> e revisa um plano de risco concluído em 2014.',
-      wasteCopy: 'Em 2022, <strong>8,5%</strong> do lixo recolhido foi recuperado (5,2% reciclado + 3,3% compostado). Em 2025, a recuperação total foi <strong>15,5%</strong>. A meta de <strong>60%</strong> é para recicláveis secos, não para o total; a de <strong>90%</strong> é para orgânicos.',
-      wasteNote: 'A recuperação é a fatia de todo o resíduo coletado que é reciclado ou compostado. A meta de 60% vale apenas para recicláveis secos — ela usa outro total como base, então é uma referência, não a meta destas barras.'
+      wasteKicker: 'Recuperação de resíduos · metas Lixo Zero',
+      wasteTabOrg: 'Orgânicos',
+      wasteTabDry: 'Recicláveis secos',
+      wasteValueOrg: '14%',
+      wasteCopyOrg: 'dos resíduos orgânicos desviados do aterro em 2025',
+      wasteValueDry: '10,8%',
+      wasteCopyDry: 'dos recicláveis secos recuperados em 2024',
+      wasteSrcPmgirs: 'Revisão do PMGIRS 2025',
+      wasteSrcPmf: 'Dados da PMF 2025',
+      wasteSrcTce: 'Dados de 2023',
+      wasteSrcComcap: 'Indicadores da Comcap'
     }
   },
   es: {
@@ -444,7 +462,9 @@ window.I18N = {
       chooseNeighborhood: "Elegí un barrio",
       moreInfo: "Más información",
       stackChart: "Barra apilada del gasto en adaptación: drenaje y aguas pluviales 39%, riesgo de ladera 18%, protección costera 13% y otras acciones 30%.",
-      wasteChart: "Recuperación total de residuos, reciclados y compostados sobre todos los residuos recolectados: 8,5% en 2022 y 15,5% en 2025. La meta de 2030 para reciclables secos es 60%."
+      wasteChartOrg: "Orgánicos desviados del relleno como fracción de los residuos orgánicos: 13,0% en 2023, 12,9% en 2024 y 14% en 2025. La meta de 2030 es 90%.",
+      wasteChartDry: "Reciclables secos recuperados como fracción de los reciclables secos: 10,3% en 2023 y 10,8% en 2024. La meta de 2030 es 60%.",
+      wasteTabs: "Fracción de residuos"
     },
     tooltips: {
       highRiskNeighborhoods: "Barrios donde más del 30% del área está mapeada como inundable: la categoría más alta del mapa.",
@@ -697,6 +717,11 @@ window.I18N = {
       "Money for prevention": "Dinero para prevención",
       "Planned for 2026 to protect the city.": "Previstos para 2026 para proteger la ciudad.",
       "Goal 60%": "Meta 60%",
+      "Goal 90%": "Meta 90%",
+      "13.0%": "13,0%",
+      "12.9%": "12,9%",
+      "10.8%": "10,8%",
+      "10.3%": "10,3%",
       "Goal": "Meta",
       "Benchmark": "Referencia",
       "2.0% of city spending": "2,0% del gasto municipal",
@@ -732,7 +757,7 @@ window.I18N = {
       "City GeoPortal": "GeoPortal de la ciudad",
       "Transparency portal": "Portal de transparencia",
       "Population 537,211 (2022) · Area 674.844 km²": "Población 537.211 (2022) · Área 674,844 km²",
-      "Data synced October 2026": "Datos sincronizados en octubre de 2026",
+      "Data synced November 2026": "Datos sincronizados en noviembre de 2026",
       "Florianópolis · Emissions and climate goals": "Florianópolis · Emisiones y metas climáticas",
       "A citizen-facing prototype built from public data. Every claim links to its source.": "Un prototipo ciudadano construido con datos públicos. Cada afirmación enlaza a su fuente.",
       "Back to top ↑": "Volver arriba ↑",
@@ -782,8 +807,17 @@ window.I18N = {
       bikeSplitCaption: 'Protegidas: ciclovías y ciclocarriles. Compartidas: ciclorrutas y espacios compartidos.',
       spendCaption: 'El gasto en movilidad cayó de <strong>2,34%</strong> a <strong>1,41%</strong> del gasto municipal. El total de 2023 es de unos R$ 50 millones.',
       floodAnswer: '<strong>22,1% de los hogares están expuestos.</strong> 66.208 hogares (22,1%) están en áreas inundables. La ciudad <strong>no tiene sistema de alerta hidrológico</strong> y está revisando un plan de riesgo terminado en 2014.',
-      wasteCopy: 'En 2022, <strong>8,5%</strong> de los residuos recolectados se recuperó (5,2% reciclado + 3,3% compostado). En 2025, la recuperación total fue <strong>15,5%</strong>. La meta de <strong>60%</strong> es para reciclables secos, no para el total; la de <strong>90%</strong> es para orgánicos.',
-      wasteNote: 'La recuperación es la parte de todos los residuos recolectados que se recicla o composta. La meta del 60% aplica solo a reciclables secos — usa otro total como base, así que es una referencia, no la meta de estas barras.'
+      wasteKicker: 'Recuperación de residuos · metas Lixo Zero',
+      wasteTabOrg: 'Orgánicos',
+      wasteTabDry: 'Reciclables secos',
+      wasteValueOrg: '14%',
+      wasteCopyOrg: 'de los residuos orgánicos desviados del relleno en 2025',
+      wasteValueDry: '10,8%',
+      wasteCopyDry: 'de los reciclables secos recuperados en 2024',
+      wasteSrcPmgirs: 'Revisión del PMGIRS 2025',
+      wasteSrcPmf: 'Datos de la PMF 2025',
+      wasteSrcTce: 'Datos de 2023',
+      wasteSrcComcap: 'Indicadores de Comcap'
     }
   }
 };

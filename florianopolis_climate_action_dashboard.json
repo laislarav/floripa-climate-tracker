@@ -8,7 +8,7 @@
     "population_estimate_2026": 598370,
     "area_km2": 674.844,
     "reference_year": 2026,
-    "last_updated": "2026-10-24",
+    "last_updated": "2026-11-03",
     "currency": "BRL",
     "data_status": "mixed_sources_citizen",
     "methodology": "Citizen-facing indicators combine official municipal, state and federal estimates with linked research and clearly labeled modeling. The flood map is built from the city GeoPortal flood-prone polygons and 2022 neighborhood population estimates; neighborhood exposure is an areal estimate, not a door-to-door count.",
@@ -281,74 +281,79 @@
     },
     {
       "id": "waste_lixo_zero",
-      "name_pt": "Recuperação de resíduos sólidos e metas Lixo Zero",
-      "name_en": "Solid waste recovery and Zero Waste targets",
+      "name_pt": "Recuperação de resíduos orgânicos e metas Lixo Zero",
+      "name_en": "Organic waste recovery and Zero Waste targets",
       "category": "waste",
-      "unit": "percent_recovered",
-      "current_value": 15.5,
+      "unit": "percent_organics_diverted",
+      "current_value": 14,
       "current_year": 2025,
       "target_year": 2030,
       "target_dry_recyclables_pct": 60,
       "target_organics_pct": 90,
       "status": "off_track",
-      "data_type": "official_derived",
-      "description": "Share of collected municipal solid waste recovered through recycling and composting: 15.5% in 2025; the 2022 GPC baseline was 8.5%.",
+      "data_type": "official",
+      "description": "Share of the organic waste fraction diverted from landfill: 14% in 2025, against a 90% goal for 2030.",
       "provenance": {
-        "type": "Official + derived",
+        "type": "Official",
         "sources": [
+          {
+            "label": "Revisão do PMGIRS 2025",
+            "publisher": "Prefeitura de Florianópolis",
+            "url": "https://strapi.redeplanejamento.pmf.sc.gov.br/uploads/26_08_2025_Oficina_prestadores_de_servico_e_comercios_9d9d9a3cfd.pdf",
+            "note": "Published 2024 valorisation rates and the PMGIRS targets (85% organics in 2025, 90% in 2030)."
+          },
+          {
+            "label": "TCE/SC — valorização 2023",
+            "publisher": "Tribunal de Contas de Santa Catarina / Prefeitura de Florianópolis",
+            "url": "https://www.tcesc.tc.br/sites/default/files/Palestra_Cidade_Lixo_Zero_caso_Florian%C3%B3polis.pdf",
+            "note": "2023 valorisation slide: organics 13.03%, dry recyclables 10.33%. The summary table in the same deck swaps these two labels."
+          },
           {
             "label": "PMF — resíduos sólidos 2025",
             "publisher": "Prefeitura de Florianópolis / Imagem da Ilha",
             "url": "https://www.imagemdailha.com.br/noticias/cidade/floripa-entra-no-seleto-grupo-lixo-zero.html",
-            "note": "2025: 14% of organics diverted from landfill and 15.5% total waste recovery."
+            "note": "2025: 14% of organics diverted from landfill."
           },
           {
-            "label": "Lixo Zero — coleta de resíduos",
-            "publisher": "Prefeitura de Florianópolis",
-            "url": "https://www.pmf.sc.gov.br/servicos/index.php?id=260&pagina=servpagina",
-            "note": "City states 100% collection coverage and 2030 targets of 60% dry recyclables and 90% organics."
-          },
-          {
-            "label": "Inventário de Emissões de GEE 2022",
-            "publisher": "Prefeitura de Florianópolis / BID / Egis",
-            "url": "https://strapi.redeplanejamento.pmf.sc.gov.br/uploads/P2_R1_Inventario_Cenarios_e_Metas_2024_v05_20241004_ae6887db3b.pdf",
-            "note": "2022 GPC baseline: 248,350 t collected, 21,154 t recovered (8.5%): 5.2% recycled + 3.3% composted."
+            "label": "Comcap — indicadores",
+            "publisher": "Autarquia Comcap",
+            "url": "https://www.pmf.sc.gov.br/sistemas/comcap/indicadores.php",
+            "note": "Household collection covers 100% of the city."
           },
           {
             "label": "SEEG 13.0",
             "publisher": "Observatório do Clima",
             "url": "https://seeg.eco.br/dados/",
-            "note": "Waste-sector emissions series, 2010–2024."
+            "note": "Waste-sector emissions series in history, 2010–2024."
           }
         ],
-        "methodology": "2025 city data: 15.5% total recovery and 14% of organics diverted from landfill. 2022 GPC baseline: 248,350 t collected; 227,240 landfilled; 12,914 recycled (5.2% of collected); 8,240 composted (3.3%); 21,154 recovered (8.5%). The 60% target is a dry-recyclables recovery rate; the 5.2% is a share of all collected waste, so the two use different denominators. The 90% target is organics.",
-        "caveats": "The 2025 figure is operational city data and is not directly comparable to the 2022 GPC inventory. The 5.2% is the recycled share of all collected waste in 2022, not a dry-recyclables recovery rate; the 60% target uses dry recyclables generated as the denominator. The 14% is the 2025 organics diversion rate, comparable to the 90% organics target."
+        "methodology": "Only published percentage rates are used. 2023 organics (13.03%) and dry recyclables (10.33%) come from the 2023 valorisation slide in the TCE/SC deck; 2024 organics (12.93%) and dry recyclables (10.76%) come from the 2024 valorisation slide in the PMGIRS revision. 2025 organics (14%) comes from the PMF. No rates were derived from tonnages.",
+        "caveats": "The 2023 summary table in the same presentation swaps the dry-recyclables and organics labels; the 2023 valorisation slide is used because it matches the 2024 series. No official 2025 dry-recyclables rate has been published. The 2022 GPC inventory uses a different scope (8.5% of all collected waste) and is not used."
       },
       "details": {
-        "total_collected_t": 248350,
-        "landfilled_t": 227240,
-        "recycled_t": 12914,
-        "composted_t": 8240,
-        "recovered_t": 21154,
-        "recovery_rate_pct_2025": 15.5,
-        "recycling_rate_pct": 5.2,
-        "composting_rate_pct": 3.3,
-        "landfill_rate_pct": 91.5,
+        "organics_rate_pct": 12.93,
+        "organics_rate_year": 2024,
+        "organics_diverted_pct_2025": 14,
+        "organics_target_pct_2025": 85,
+        "organics_target_pct_2030": 90,
+        "dry_recyclables_rate_pct": 10.76,
+        "dry_recyclables_rate_year": 2024,
+        "dry_recyclables_target_pct_2030": 60,
         "collection_coverage_pct": 100,
         "waste_emissions_tco2e_2022": 184056,
         "waste_emissions_tco2e_2024": 206102,
         "waste_emissions_change_2010_2024_pct": 66.7,
         "landfill_gas_capture_pct": 46.2,
         "seasonal_increase_pct": 21,
-        "recovery_rate_pct_2022": 8.5,
-        "organics_diverted_pct": 14,
-        "organics_diverted_year": 2025,
-        "recovery_year": 2025,
-        "tonnages_year": 2022,
-        "recycling_rate_year": 2022,
-        "recycling_rate_basis": "share of total collected waste",
-        "composting_rate_year": 2022,
-        "composting_rate_basis": "share of total collected waste"
+        "organics_rate_series_pct": [
+          { "year": 2023, "value": 13.03 },
+          { "year": 2024, "value": 12.93 },
+          { "year": 2025, "value": 14.0 }
+        ],
+        "dry_recyclables_rate_series_pct": [
+          { "year": 2023, "value": 10.33 },
+          { "year": 2024, "value": 10.76 }
+        ]
       },
       "history": [
         {

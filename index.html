@@ -425,9 +425,6 @@
             <div><strong id="nb-high">—</strong><span class="term-label" tabindex="0" data-i18n-tooltip="pmrrHigh">high or very high PMRR risk (2014)</span></div>
             <div><strong id="nb-rank">—</strong><span>rank by residents exposed</span></div>
           </div>
-          <div class="nb-actions">
-            <a class="text-link" href="https://geoportal.pmf.sc.gov.br/map" target="_blank" rel="noopener">Check your address on the city GeoPortal →</a>
-          </div>
           <p class="card-source">
             <span class="card-source-label">Sources</span>
             <a href="https://geoportal.pmf.sc.gov.br/map" target="_blank" rel="noopener">City GeoPortal — flood-prone areas</a>
@@ -458,57 +455,102 @@
       <div class="more-grid">
         <article class="more-card more-card-waste">
           <div class="more-top">
-            <span class="micro-label">Total waste recovery · recycled + composted</span>
+            <span class="micro-label" data-i18n-html="wasteKicker">Waste recovery · Lixo Zero goals</span>
             <span class="status-pill status-off-track">Off track</span>
           </div>
-          <strong class="more-value waste-value">15.5%</strong>
-          <p class="more-copy">total recovery in 2025</p>
-          <div class="waste-chart" role="img" aria-label="Total waste recovery, recycled and composted share of all collected waste: 8.5% in 2022 and 15.5% in 2025. The 2030 target for dry recyclables is 60%." data-i18n-aria="wasteChart">
-            <div class="waste-chart-body" aria-hidden="true">
-              <div class="waste-chart-labels">
-                <span>2022</span>
-                <span>2025</span>
-                <span>2030</span>
+
+          <div class="waste-tabs" role="tablist" aria-label="Waste fraction" data-i18n-aria="wasteTabs">
+            <button class="waste-tab is-active" type="button" role="tab" id="waste-tab-org" aria-selected="true" aria-controls="waste-panel-org" data-waste-tab="org">
+              <span data-i18n-html="wasteTabOrg">Organics</span>
+            </button>
+            <button class="waste-tab" type="button" role="tab" id="waste-tab-dry" aria-selected="false" aria-controls="waste-panel-dry" tabindex="-1" data-waste-tab="dry">
+              <span data-i18n-html="wasteTabDry">Dry recyclables</span>
+            </button>
+          </div>
+
+          <div class="waste-panel waste-panel-org is-active" id="waste-panel-org" role="tabpanel" aria-labelledby="waste-tab-org">
+            <strong class="more-value" data-i18n-html="wasteValueOrg">14%</strong>
+            <p class="more-copy" data-i18n-html="wasteCopyOrg">of organic waste diverted from landfill in 2025</p>
+            <div class="waste-chart" role="img" aria-label="Organics diverted from landfill as a share of the organic fraction: 13.0% in 2023, 12.9% in 2024 and 14% in 2025. The 2030 target is 90%." data-i18n-aria="wasteChartOrg">
+              <div class="waste-chart-body" aria-hidden="true">
+                <div class="waste-chart-labels">
+                  <span>2023</span>
+                  <span>2024</span>
+                  <span>2025</span>
+                  <span>2030</span>
+                </div>
+                <div class="waste-chart-plot">
+                  <div class="waste-chart-grid">
+                    <span style="left:0"></span>
+                    <span style="left:33.333%"></span>
+                    <span style="left:66.666%"></span>
+                    <span style="left:100%"></span>
+                  </div>
+                  <div class="waste-chart-row" style="--w:14.5%"><span class="waste-chart-bar"></span><span class="waste-chart-bar-value">13.0%</span></div>
+                  <div class="waste-chart-row" style="--w:14.4%"><span class="waste-chart-bar"></span><span class="waste-chart-bar-value">12.9%</span></div>
+                  <div class="waste-chart-row" style="--w:15.6%"><span class="waste-chart-bar"></span><span class="waste-chart-bar-value">14%</span></div>
+                  <div class="waste-chart-row" style="--w:100%"><span class="waste-chart-bar waste-chart-bar-goal"><span class="waste-chart-bar-value waste-chart-bar-value-goal">Goal 90%</span></span></div>
+                </div>
               </div>
-              <div class="waste-chart-plot">
-                <div class="waste-chart-grid">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+              <div class="waste-chart-axis" aria-hidden="true">
+                <span></span>
+                <div class="waste-chart-axis-scale">
+                  <span style="left:0">0%</span>
+                  <span style="left:33.333%">30%</span>
+                  <span style="left:66.666%">60%</span>
+                  <span style="left:100%">90%</span>
                 </div>
-                <div class="waste-chart-row">
-                  <span class="waste-chart-bar waste-chart-bar-base" style="--w:14.2%"><span class="waste-chart-bar-value">8.5%</span></span>
-                </div>
-                <div class="waste-chart-row">
-                  <span class="waste-chart-bar" style="--w:25.8%"><span class="waste-chart-bar-value">15.5%</span></span>
-                </div>
-                <div class="waste-chart-row">
-                  <span class="waste-chart-bar waste-chart-bar-goal" style="--w:100%"><span class="waste-chart-bar-value waste-chart-bar-value-goal">Target 60%</span></span>
-                </div>
+                <span></span>
               </div>
-            </div>
-            <div class="waste-chart-axis" aria-hidden="true">
-              <span></span>
-              <div class="waste-chart-axis-scale">
-                <span>0%</span>
-                <span>15%</span>
-                <span>30%</span>
-                <span>45%</span>
-                <span>60%</span>
-              </div>
-              <span></span>
             </div>
           </div>
-          <p class="waste-chart-note" data-i18n-html="wasteNote">Recovery is the share of all collected waste that is recycled or composted. The 60% target applies to dry recyclables only — it counts against a different total, so it is a reference line, not the goal for these bars.</p>
+
+          <div class="waste-panel waste-panel-dry" id="waste-panel-dry" role="tabpanel" aria-labelledby="waste-tab-dry" hidden>
+            <strong class="more-value" data-i18n-html="wasteValueDry">10.8%</strong>
+            <p class="more-copy" data-i18n-html="wasteCopyDry">of dry recyclables recovered in 2024</p>
+            <div class="waste-chart" role="img" aria-label="Dry recyclables recovered as a share of the dry-recyclable fraction: 10.3% in 2023 and 10.8% in 2024. The 2030 target is 60%." data-i18n-aria="wasteChartDry">
+              <div class="waste-chart-body" aria-hidden="true">
+                <div class="waste-chart-labels">
+                  <span>2023</span>
+                  <span>2024</span>
+                  <span>2030</span>
+                </div>
+                <div class="waste-chart-plot">
+                  <div class="waste-chart-grid">
+                    <span style="left:0"></span>
+                    <span style="left:25%"></span>
+                    <span style="left:50%"></span>
+                    <span style="left:75%"></span>
+                    <span style="left:100%"></span>
+                  </div>
+                  <div class="waste-chart-row" style="--w:17.2%"><span class="waste-chart-bar"></span><span class="waste-chart-bar-value">10.3%</span></div>
+                  <div class="waste-chart-row" style="--w:17.9%"><span class="waste-chart-bar"></span><span class="waste-chart-bar-value">10.8%</span></div>
+                  <div class="waste-chart-row" style="--w:100%"><span class="waste-chart-bar waste-chart-bar-goal"><span class="waste-chart-bar-value waste-chart-bar-value-goal">Goal 60%</span></span></div>
+                </div>
+              </div>
+              <div class="waste-chart-axis" aria-hidden="true">
+                <span></span>
+                <div class="waste-chart-axis-scale">
+                  <span style="left:0">0%</span>
+                  <span style="left:25%">15%</span>
+                  <span style="left:50%">30%</span>
+                  <span style="left:75%">45%</span>
+                  <span style="left:100%">60%</span>
+                </div>
+                <span></span>
+              </div>
+            </div>
+          </div>
+
           <p class="card-source">
             <span class="card-source-label">Sources</span>
-            <a href="https://www.imagemdailha.com.br/noticias/cidade/floripa-entra-no-seleto-grupo-lixo-zero.html" target="_blank" rel="noopener">PMF 2025 data</a>
+            <a href="https://strapi.redeplanejamento.pmf.sc.gov.br/uploads/26_08_2025_Oficina_prestadores_de_servico_e_comercios_9d9d9a3cfd.pdf" target="_blank" rel="noopener" data-i18n-html="wasteSrcPmgirs">PMGIRS revision 2025</a>
             <span class="source-sep">·</span>
-            <a href="https://strapi.redeplanejamento.pmf.sc.gov.br/uploads/P2_R1_Inventario_Cenarios_e_Metas_2024_v05_20241004_ae6887db3b.pdf" target="_blank" rel="noopener">GHG inventory 2022</a>
+            <a href="https://www.imagemdailha.com.br/noticias/cidade/floripa-entra-no-seleto-grupo-lixo-zero.html" target="_blank" rel="noopener" data-i18n-html="wasteSrcPmf">PMF 2025 data</a>
             <span class="source-sep">·</span>
-            <a href="https://www.pmf.sc.gov.br/servicos/index.php?id=260&amp;pagina=servpagina" target="_blank" rel="noopener">Lixo Zero programme</a>
+            <a href="https://www.tcesc.tc.br/sites/default/files/Palestra_Cidade_Lixo_Zero_caso_Florian%C3%B3polis.pdf" target="_blank" rel="noopener" data-i18n-html="wasteSrcTce">2023 data</a>
+            <span class="source-sep">·</span>
+            <a href="https://www.pmf.sc.gov.br/sistemas/comcap/indicadores.php" target="_blank" rel="noopener" data-i18n-html="wasteSrcComcap">Comcap indicators</a>
           </p>
         </article>
 
@@ -607,7 +649,7 @@
         <div class="method-foot">
           <span>Florianópolis · 27°35′S 48°33′W</span>
           <span>Population 537,211 (2022) · Area 674.844 km²</span>
-          <span>Data synced October 2026</span>
+          <span>Data synced November 2026</span>
         </div>
       </div>
 
