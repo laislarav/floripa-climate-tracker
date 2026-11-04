@@ -331,6 +331,11 @@ window.I18N = {
       "Culture & sport": "Cultura e esporte",
       "Innovation": "Incentivo à inovação",
       "All programs": "Dados gerais",
+      "Help keep the data accurate": "Ajude a manter os dados precisos",
+      "Detailed sources are listed throughout the page. Because we cross public databases, information can go out of date.": "As fontes detalhadas estão indicadas ao longo da página. Como cruzamos bases públicas, informações podem desatualizar.",
+      "Report an error in the dashboard": "Reportar erro no painel",
+      "Flood and risk": "Inundação e riscos",
+
       "Tourism": "Turismo",
       "Others": "Outros",
       "R$ 316.9M · 7.4% of budget": "R$ 316,9M · 7,4% do orçamento",
@@ -438,7 +443,7 @@ window.I18N = {
       "Source library": "Biblioteca de fontes",
       "GHG inventory 2022": "Inventário de GEE 2022",
       "City GeoPortal": "GeoPortal da cidade",
-      "Transparency portal": "Portal da transparência",
+      "Transparency portal": "Portal da Transparência",
       "Population 537,211 (2022) · Area 674.844 km²": "População 537.211 (2022) · Área 674,844 km²",
       "Data synced November 2026": "Dados sincronizados em novembro de 2026",
       "Florianópolis · Emissions and climate goals": "Florianópolis · Emissões e metas climáticas",
@@ -472,7 +477,7 @@ window.I18N = {
       "85.4 km²": "85,4 km²",
       "R$ 92.4M": "R$ 92,4M",
       "2.23%": "2,23%",
-      "+Pedal programme": "programa +Pedal"
+      "+Pedal programme": "Programa +Pedal"
     },
     rich: {
       heroTitle: 'Entendendo as <span class="highlight">emissões e metas climáticas</span> de Florianópolis.',
@@ -741,6 +746,11 @@ window.I18N = {
       "Culture & sport": "Cultura y deporte",
       "Innovation": "Incentivo a la innovación",
       "All programs": "Datos generales",
+      "Help keep the data accurate": "Ayuda a mantener los datos precisos",
+      "Detailed sources are listed throughout the page. Because we cross public databases, information can go out of date.": "Las fuentes detalladas están indicadas a lo largo de la página. Como cruzamos bases públicas, la información puede quedar desactualizada.",
+      "Report an error in the dashboard": "Reportar un error en el panel",
+      "Flood and risk": "Inundación y riesgos",
+
       "Tourism": "Turismo",
       "Others": "Otros",
       "R$ 316.9M · 7.4% of budget": "R$ 316,9M · 7,4% del presupuesto",
@@ -882,7 +892,7 @@ window.I18N = {
       "85.4 km²": "85,4 km²",
       "R$ 92.4M": "R$ 92,4M",
       "2.23%": "2,23%",
-      "+Pedal programme": "programa +Pedal"
+      "+Pedal programme": "Programa +Pedal"
     },
     rich: {
       heroTitle: 'Entender las <span class="highlight">emisiones y metas climáticas</span> de Florianópolis.',

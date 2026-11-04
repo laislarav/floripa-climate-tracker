@@ -1218,8 +1218,8 @@ figcaption strong {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-6);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
   margin-top: var(--space-7);
 }
 
@@ -1266,40 +1266,21 @@ figcaption strong {
   line-height: 1.55;
 }
 
-.method-disclosure {
-  margin-top: 14px;
+.method-list a {
+  color: #F7F1E6;
+  text-decoration: underline;
+  text-decoration-color: rgba(247, 241, 230, 0.4);
+  text-underline-offset: 2px;
 }
 
-.method-disclosure summary {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-body);
-  font-size: 12px;
-  color: var(--accent-3);
-  cursor: pointer;
-  list-style: none;
+.method-list a:hover {
+  text-decoration-color: #F7F1E6;
 }
 
-.method-disclosure summary::-webkit-details-marker {
-  display: none;
-}
-
-.method-disclosure summary::before {
-  content: "+";
-  font-size: 14px;
-  line-height: 1;
-}
-
-.method-disclosure[open] summary::before {
-  content: "–";
-}
-
-.method-disclosure p {
-  margin: 9px 0 0;
-  font-size: 12px;
-  line-height: 1.6;
-  color: rgba(243, 238, 229, 0.72);
+.method-list a:focus-visible {
+  outline: 2px solid var(--accent-3);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .method-foot {
@@ -1354,86 +1335,6 @@ figcaption strong {
 
 .site-footer a:hover {
   color: var(--accent-strong);
-}
-
-.source-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 10px;
-  margin-top: var(--space-5);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--line);
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-.source-type {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 9px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 650;
-  line-height: 1.25;
-  white-space: nowrap;
-}
-
-.source-mixed {
-  background: rgba(29, 42, 35, 0.08);
-  color: var(--ink-soft);
-}
-
-.source-row a {
-  color: var(--ink-soft);
-  text-decoration: underline;
-  text-decoration-color: rgba(29, 42, 35, 0.28);
-  text-underline-offset: 3px;
-}
-
-.source-row a:hover {
-  color: var(--forest);
-  text-decoration-color: var(--forest);
-}
-
-.source-sep {
-  color: rgba(29, 42, 35, 0.35);
-}
-
-.source-row-method {
-  gap: 8px;
-  border-top-color: rgba(243, 238, 229, 0.2);
-  color: rgba(243, 238, 229, 0.78);
-}
-
-.source-row-method .source-label {
-  color: rgba(243, 238, 229, 0.78);
-}
-
-.source-row-method .source-type {
-  background: rgba(243, 238, 229, 0.16);
-  color: #F3EEE5;
-}
-
-.source-row-method a {
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(243, 238, 229, 0.08);
-  color: rgba(243, 238, 229, 0.9);
-  font-size: 12px;
-  line-height: 1.2;
-  text-decoration: none;
-}
-
-.source-row-method a:hover {
-  background: rgba(243, 238, 229, 0.16);
-  color: #FFFFFF;
-  text-decoration: none;
-}
-
-.source-row-method .source-sep {
-  color: rgba(243, 238, 229, 0.4);
 }
 
 .card-source {
