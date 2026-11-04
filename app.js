@@ -1050,9 +1050,7 @@
     return placed;
   };
 
-  const layoutBudgetMap = () => {
-    const map = document.querySelector("[data-budget-map]");
-    if (!map) return;
+  const layoutBudgetTiles = (map, total) => {
     const tiles = [...map.querySelectorAll(".budget-tile")];
     if (!tiles.length) return;
     const width = map.clientWidth;
@@ -1060,10 +1058,10 @@
     if (!width || !height) return;
 
     const values = tiles.map((tile) => Number(tile.dataset.value) || 0);
-    const total = values.reduce((sum, value) => sum + value, 0) || 1;
+    const base = total || values.reduce((sum, value) => sum + value, 0) || 1;
     const percent = budgetPercent();
     const items = values
-      .map((value, index) => ({ index, area: (value / total) * width * height }))
+      .map((value, index) => ({ index, area: (value / base) * width * height }))
       .sort((a, b) => b.area - a.area);
 
     squarifyBudget(items, width, height).forEach(({ index, x, y, w, h }) => {
@@ -1076,10 +1074,17 @@
       tile.style.width = `${tileWidth}px`;
       tile.style.height = `${tileHeight}px`;
       const value = tile.querySelector(".budget-tile-value");
-      if (value) value.textContent = `${percent.format((values[index] / total) * 100)}%`;
+      if (value) value.textContent = `${percent.format((values[index] / base) * 100)}%`;
       tile.classList.toggle("is-compact", tileWidth < 96 || tileHeight < 54);
       tile.classList.toggle("is-tiny", tileWidth < 60 || tileHeight < 34);
     });
+  };
+
+  const layoutBudgetMap = () => {
+    const main = document.querySelector("[data-budget-map]");
+    if (main) layoutBudgetTiles(main);
+    const detail = document.querySelector("[data-budget-detail]");
+    if (detail && !detail.hidden) layoutBudgetTiles(detail, Number(detail.dataset.total) || 0);
   };
 
   const initBudgetMap = () => {
@@ -1091,10 +1096,18 @@
     });
 
     const card = document.querySelector(".more-card-budget");
-    const tip = card ? card.querySelector(".budget-tip") : null;
-    if (!card || !tip) return;
+    if (!card) return;
+    const main = card.querySelector("[data-budget-map]");
+    const detail = card.querySelector("[data-budget-detail]");
+    const nav = card.querySelector("[data-budget-nav]");
+    const back = card.querySelector("[data-budget-back]");
+    const open = card.querySelector("[data-budget-open]");
+    const tip = card.querySelector(".budget-tip");
+    if (!main || !detail || !tip) return;
 
     let hideTimer = 0;
+    let swapTimer = 0;
+
     const hideTip = () => {
       tip.classList.remove("is-visible");
       window.clearTimeout(hideTimer);
@@ -1122,6 +1135,41 @@
       tip.style.top = `${top}px`;
       requestAnimationFrame(() => tip.classList.add("is-visible"));
     };
+
+    const swapView = (from, to, showNav) => {
+      hideTip();
+      window.clearTimeout(swapTimer);
+      from.classList.add("is-swapping");
+      swapTimer = window.setTimeout(() => {
+        from.hidden = true;
+        from.classList.remove("is-swapping");
+        to.hidden = false;
+        if (nav) nav.hidden = !showNav;
+        layoutBudgetTiles(to, to.dataset.total ? Number(to.dataset.total) : undefined);
+        to.classList.add("is-swapping");
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => to.classList.remove("is-swapping"));
+        });
+      }, 140);
+    };
+
+    if (open) {
+      open.addEventListener("click", () => {
+        swapView(main, detail, true);
+        window.setTimeout(() => {
+          if (back) back.focus();
+        }, 210);
+      });
+    }
+
+    if (back) {
+      back.addEventListener("click", () => {
+        swapView(detail, main, false);
+        window.setTimeout(() => {
+          if (open) open.focus();
+        }, 210);
+      });
+    }
 
     card.querySelectorAll(".budget-tile").forEach((tile) => {
       tile.addEventListener("mouseenter", () => showTip(tile));

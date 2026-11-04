@@ -564,7 +564,14 @@
           </div>
           <strong class="more-value">R$ 4.27B</strong>
           <p class="more-copy">total budget for 2026, by program</p>
-          <div class="budget-map" data-budget-map role="img" aria-label="Share of the 2026 municipal budget by program." data-i18n-aria="budgetMap">
+          <div class="budget-nav" data-budget-nav hidden>
+            <button class="budget-back" type="button" data-budget-back data-i18n-aria="budgetBack">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 6l-6 6 6 6"/></svg>
+            </button>
+            <span class="budget-crumb"><span>All programs</span><span class="budget-crumb-sep">›</span><span>Others</span></span>
+            <span class="budget-nav-total">R$ 316.9M · 7.4% of budget</span>
+          </div>
+          <div class="budget-map" data-budget-map role="group" aria-label="Share of the 2026 municipal budget by program." data-i18n-aria="budgetMap">
               <div class="budget-tile" data-value="1180923123" data-tone="deep" tabindex="0" data-i18n-tooltip="budgetProg109">
                 <span class="budget-tile-label">Public management</span>
                 <span class="budget-tile-value"></span>
@@ -589,6 +596,12 @@
                 <span class="budget-tile-label">Housing</span>
                 <span class="budget-tile-value"></span>
               </div>
+              <button class="budget-tile budget-tile-group" type="button" data-value="316931115" data-tone="light" data-budget-open data-i18n-tooltip="budgetOthers">
+                <span class="budget-tile-label">Others<span class="budget-tile-cta" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h13m0 0-5-5m5 5-5 5"/></svg></span></span>
+                <span class="budget-tile-value"></span>
+              </button>
+          </div>
+          <div class="budget-map budget-map-detail" data-budget-detail data-total="316931115" role="group" aria-label="Other programs in the 2026 municipal budget." data-i18n-aria="budgetDetail" hidden>
               <div class="budget-tile" data-value="158529834" data-tone="light" tabindex="0" data-i18n-tooltip="budgetProg111">
                 <span class="budget-tile-label">Legislative</span>
                 <span class="budget-tile-value"></span>
@@ -598,7 +611,7 @@
                 <span class="budget-tile-value"></span>
               </div>
               <div class="budget-tile" data-value="45954825" data-tone="light" tabindex="0" data-i18n-tooltip="budgetProg107">
-                <span class="budget-tile-label">Culture & sport</span>
+                <span class="budget-tile-label">Culture &amp; sport</span>
                 <span class="budget-tile-value"></span>
               </div>
               <div class="budget-tile" data-value="26146241" data-tone="light" tabindex="0" data-i18n-tooltip="budgetProg108">

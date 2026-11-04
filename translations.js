@@ -16,7 +16,9 @@ window.I18N = {
       wasteChartOrg: "Organics diverted from landfill as a share of the organic fraction: 13.0% in 2023, 12.9% in 2024 and 14% in 2025. The 2030 target is 90%.",
       wasteChartDry: "Dry recyclables recovered as a share of the dry-recyclable fraction: 10.3% in 2023 and 10.8% in 2024. The 2030 target is 60%.",
       wasteTabs: "Waste fraction",
-      budgetMap: "Treemap of the 2026 municipal budget: public management 27.7%, education 26.1%, health 16.6%, sustainability 10.3%, mobility 7.6%, housing 4.3%, legislative 3.7%, public safety 1.9%, culture and sport 1.1%, tourism 0.6%, innovation 0.1%."
+      budgetMap: "Treemap of the 2026 municipal budget: public management 27.7%, education 26.1%, health 16.6%, sustainability 10.3%, mobility 7.6%, housing 4.3%, others 7.4%.",
+      budgetDetail: "Other programs: legislative 50.0%, public safety 25.6%, culture and sport 14.5%, tourism 8.2%, innovation 1.6%.",
+      budgetBack: "Back to all programs"
     },
     tooltips: {
       budgetProg109: "Efficiency and public management quality",
@@ -30,6 +32,7 @@ window.I18N = {
       budgetProg107: "Culture, sport and leisure",
       budgetProg108: "Tourism",
       budgetProg110: "Economic development and innovation incentives",
+      budgetOthers: "Legislative process, public safety, culture and sport, tourism and innovation incentives — R$ 316.9M",
       highRiskNeighborhoods: "Neighborhoods where more than 30% of the area is mapped as flood-prone — the highest category on the map below.",
       hydrologicalAlert: "A system that issues warnings before floods, based on rainfall and water levels.",
       pmrr: "PMRR is the Municipal Risk Reduction Plan, created in 2006 and last revised in 2014; it maps areas exposed to landslides, floods and other hazards.",
@@ -105,7 +108,9 @@ window.I18N = {
       wasteChartOrg: "Orgânicos desviados do aterro como fração dos resíduos orgânicos: 13,0% em 2023, 12,9% em 2024 e 14% em 2025. A meta de 2030 é 90%.",
       wasteChartDry: "Recicláveis secos recuperados como fração dos recicláveis secos: 10,3% em 2023 e 10,8% em 2024. A meta de 2030 é 60%.",
       wasteTabs: "Fração de resíduos",
-      budgetMap: "Treemap do orçamento municipal de 2026: gestão pública 27,7%, educação 26,1%, saúde 16,6%, sustentabilidade 10,3%, mobilidade 7,6%, habitação 4,3%, processo legislativo 3,7%, segurança 1,9%, cultura e esporte 1,1%, turismo 0,6%, inovação 0,1%."
+      budgetMap: "Treemap do orçamento municipal de 2026: gestão pública 27,7%, educação 26,1%, saúde 16,6%, sustentabilidade 10,3%, mobilidade 7,6%, habitação 4,3%, outros 7,4%.",
+      budgetDetail: "Outros programas: processo legislativo 50,0%, segurança 25,6%, cultura e esporte 14,5%, turismo 8,2%, incentivo à inovação 1,6%.",
+      budgetBack: "Voltar para todos os programas"
     },
     tooltips: {
       budgetProg109: "Eficiência e qualificação na gestão pública",
@@ -119,6 +124,7 @@ window.I18N = {
       budgetProg107: "Cultura, esporte e lazer",
       budgetProg108: "Turismo",
       budgetProg110: "Incentivo ao desenvolvimento econômico e à inovação",
+      budgetOthers: "Processo legislativo, segurança, cultura e esporte, turismo e incentivo à inovação — R$ 316,9M",
       highRiskNeighborhoods: "Bairros em que mais de 30% da área é mapeada como inundável — a categoria mais alta do mapa abaixo.",
       hydrologicalAlert: "Sistema que emite alertas antes de inundações, com base na chuva e no nível dos rios.",
       pmrr: "PMRR é o Plano Municipal de Redução de Riscos, criado em 2006 e revisado pela última vez em 2014; ele mapeia as áreas expostas a deslizamentos, inundações e outros perigos.",
@@ -320,6 +326,9 @@ window.I18N = {
       "Public safety": "Segurança",
       "Culture & sport": "Cultura e esporte",
       "Innovation": "Incentivo à inovação",
+      "All programs": "Dados gerais",
+      "Others": "Outros",
+      "R$ 316.9M · 7.4% of budget": "R$ 316,9M · 7,4% do orçamento",
       "2026 budget · LOA": "Orçamento 2026 · LOA",
       "R$ 4.27B": "R$ 4,27B",
       "total budget for 2026, by program": "orçamento total de 2026, por programa",
@@ -506,7 +515,9 @@ window.I18N = {
       wasteChartOrg: "Orgánicos desviados del relleno como fracción de los residuos orgánicos: 13,0% en 2023, 12,9% en 2024 y 14% en 2025. La meta de 2030 es 90%.",
       wasteChartDry: "Reciclables secos recuperados como fracción de los reciclables secos: 10,3% en 2023 y 10,8% en 2024. La meta de 2030 es 60%.",
       wasteTabs: "Fracción de residuos",
-      budgetMap: "Treemap del presupuesto municipal de 2026: gestión pública 27,7%, educación 26,1%, salud 16,6%, sostenibilidad 10,3%, movilidad 7,6%, vivienda 4,3%, proceso legislativo 3,7%, seguridad 1,9%, cultura y deporte 1,1%, turismo 0,6%, innovación 0,1%."
+      budgetMap: "Treemap del presupuesto municipal de 2026: gestión pública 27,7%, educación 26,1%, salud 16,6%, sostenibilidad 10,3%, movilidad 7,6%, vivienda 4,3%, otros 7,4%.",
+      budgetDetail: "Otros programas: proceso legislativo 50,0%, seguridad 25,6%, cultura y deporte 14,5%, turismo 8,2%, incentivo a la innovación 1,6%.",
+      budgetBack: "Volver a todos los programas"
     },
     tooltips: {
       budgetProg109: "Eficiencia y cualificación en la gestión pública",
@@ -520,6 +531,7 @@ window.I18N = {
       budgetProg107: "Cultura, deporte y ocio",
       budgetProg108: "Turismo",
       budgetProg110: "Incentivo al desarrollo económico y a la innovación",
+      budgetOthers: "Proceso legislativo, seguridad, cultura y deporte, turismo e incentivo a la innovación — R$ 316,9M",
       highRiskNeighborhoods: "Barrios donde más del 30% del área está mapeada como inundable: la categoría más alta del mapa.",
       hydrologicalAlert: "Sistema que emite alertas antes de las inundaciones, según la lluvia y el nivel de los ríos.",
       pmrr: "El PMRR es el Plan Municipal de Reducción de Riesgos, creado en 2006 y revisado por última vez en 2014; mapea las áreas expuestas a deslizamientos, inundaciones y otros peligros.",
@@ -721,6 +733,9 @@ window.I18N = {
       "Public safety": "Seguridad",
       "Culture & sport": "Cultura y deporte",
       "Innovation": "Incentivo a la innovación",
+      "All programs": "Datos generales",
+      "Others": "Otros",
+      "R$ 316.9M · 7.4% of budget": "R$ 316,9M · 7,4% del presupuesto",
       "2026 budget · LOA": "Presupuesto 2026 · LOA",
       "R$ 4.27B": "R$ 4,27B",
       "total budget for 2026, by program": "presupuesto total de 2026, por programa",
