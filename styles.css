@@ -2537,24 +2537,57 @@ html.js .reveal.is-visible {
 .budget-tile {
   position: absolute;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 6px;
-  padding: 10px 12px;
-  border-radius: 6px;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 11px 12px;
+  border-radius: 5px;
   color: var(--ink);
   cursor: default;
   overflow: hidden;
 }
 
-.budget-tile[data-tone="deep"] {
-  background: var(--forest);
+.budget-tile[data-tone="1"] {
+  background: #2E5847;
   color: #F7F1E6;
 }
 
-.budget-tile[data-tone="light"] {
-  background: #BFD1C6;
+.budget-tile[data-tone="2"] {
+  background: #38614D;
+  color: #F7F1E6;
+}
+
+.budget-tile[data-tone="3"] {
+  background: #436A56;
+  color: #F7F1E6;
+}
+
+.budget-tile[data-tone="4"] {
+  background: #4F7561;
+  color: #F7F1E6;
+}
+
+.budget-tile[data-tone="5"] {
+  background: #7C9C89;
   color: var(--ink);
+}
+
+.budget-tile[data-tone="6"] {
+  background: #8FB0A0;
+  color: var(--ink);
+}
+
+.budget-tile[data-tone="7"] {
+  background: #A9C2B3;
+  color: var(--ink);
+}
+
+.budget-tile-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  min-width: 0;
+  text-align: right;
 }
 
 .budget-tile:hover,
@@ -2569,21 +2602,17 @@ html.js .reveal.is-visible {
 
 .budget-tile-label {
   max-width: 100%;
-  overflow: hidden;
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 500;
   line-height: 1.2;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .budget-tile-value {
-  align-self: flex-end;
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.45vw, 1.55rem);
+  font-size: clamp(1.15rem, 1.9vw, 1.85rem);
   font-weight: 600;
-  line-height: 1;
+  line-height: 0.95;
   font-variant-numeric: tabular-nums;
 }
 
@@ -2619,13 +2648,16 @@ html.js .reveal.is-visible {
   }
 
   .budget-tile {
-    padding: 9px 10px;
+    padding: 8px 9px;
   }
 
   .budget-tile-label {
-    font-size: 11px;
-    white-space: normal;
-    overflow-wrap: anywhere;
+    font-size: 10.5px;
+    line-height: 1.15;
+  }
+
+  .budget-tile-value {
+    font-size: 1rem;
   }
 }
 

@@ -996,60 +996,6 @@
     maximumFractionDigits: 1,
   });
 
-  const squarifyBudget = (items, width, height) => {
-    const placed = [];
-    let x = 0;
-    let y = 0;
-    let w = width;
-    let h = height;
-    let start = 0;
-    while (start < items.length) {
-      const shortSide = Math.min(w, h);
-      const worst = (areas) => {
-        const sum = areas.reduce((total, area) => total + area, 0);
-        const max = Math.max(...areas);
-        const min = Math.min(...areas);
-        return Math.max(
-          (shortSide * shortSide * max) / (sum * sum),
-          (sum * sum) / (shortSide * shortSide * min),
-        );
-      };
-      let current = [items[start].area];
-      let rowArea = items[start].area;
-      let end = start + 1;
-      while (end < items.length) {
-        const next = current.concat(items[end].area);
-        if (worst(next) > worst(current)) break;
-        current = next;
-        rowArea += items[end].area;
-        end += 1;
-      }
-      if (w >= h) {
-        const rowWidth = rowArea / h;
-        let offset = y;
-        for (let index = start; index < end; index += 1) {
-          const itemHeight = items[index].area / rowWidth;
-          placed.push({ index: items[index].index, x, y: offset, w: rowWidth, h: itemHeight });
-          offset += itemHeight;
-        }
-        x += rowWidth;
-        w -= rowWidth;
-      } else {
-        const rowHeight = rowArea / w;
-        let offset = x;
-        for (let index = start; index < end; index += 1) {
-          const itemWidth = items[index].area / rowHeight;
-          placed.push({ index: items[index].index, x: offset, y, w: itemWidth, h: rowHeight });
-          offset += itemWidth;
-        }
-        y += rowHeight;
-        h -= rowHeight;
-      }
-      start = end;
-    }
-    return placed;
-  };
-
   const layoutBudgetTiles = (map) => {
     const tiles = [...map.querySelectorAll(".budget-tile")];
     if (!tiles.length) return;
@@ -1057,22 +1003,37 @@
     const height = map.clientHeight;
     if (!width || !height) return;
 
-    const values = tiles.map((tile) => Number(tile.dataset.value) || 0);
-    const total = values.reduce((sum, value) => sum + value, 0) || 1;
+    const total = tiles.reduce((sum, tile) => sum + (Number(tile.dataset.value) || 0), 0) || 1;
     const percent = budgetPercent();
-    const items = values
-      .map((value, index) => ({ index, area: (value / total) * width * height }))
-      .sort((a, b) => b.area - a.area);
+    const columns = [];
+    tiles.forEach((tile) => {
+      const key = tile.dataset.col || "a";
+      let column = columns.find((entry) => entry.key === key);
+      if (!column) {
+        column = { key, tiles: [] };
+        columns.push(column);
+      }
+      column.tiles.push(tile);
+    });
 
-    squarifyBudget(items, width, height).forEach(({ index, x, y, w, h }) => {
-      const tile = tiles[index];
-      const inset = 1.5;
-      tile.style.left = `${x + inset}px`;
-      tile.style.top = `${y + inset}px`;
-      tile.style.width = `${Math.max(0, w - inset * 2)}px`;
-      tile.style.height = `${Math.max(0, h - inset * 2)}px`;
-      const value = tile.querySelector(".budget-tile-value");
-      if (value) value.textContent = `${percent.format((values[index] / total) * 100)}%`;
+    const inset = 1;
+    let x = 0;
+    columns.forEach((column) => {
+      const columnTotal = column.tiles.reduce((sum, tile) => sum + (Number(tile.dataset.value) || 0), 0);
+      const columnWidth = (columnTotal / total) * width;
+      let y = 0;
+      column.tiles.forEach((tile) => {
+        const value = Number(tile.dataset.value) || 0;
+        const tileHeight = (value / columnTotal) * height;
+        tile.style.left = `${x + inset}px`;
+        tile.style.top = `${y + inset}px`;
+        tile.style.width = `${Math.max(0, columnWidth - inset * 2)}px`;
+        tile.style.height = `${Math.max(0, tileHeight - inset * 2)}px`;
+        const valueElement = tile.querySelector(".budget-tile-value");
+        if (valueElement) valueElement.textContent = `${percent.format((value / total) * 100)}%`;
+        y += tileHeight;
+      });
+      x += columnWidth;
     });
   };
 
