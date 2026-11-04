@@ -2458,11 +2458,13 @@ html.js .reveal.is-visible {
 .more-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: start;
   gap: var(--card-gap);
 }
 
-.more-card-waste {
-  grid-column: 1 / -1;
+.more-card-waste,
+.more-card-budget {
+  grid-column: span 3;
 }
 
 .more-card {
@@ -2507,8 +2509,16 @@ html.js .reveal.is-visible {
   margin-top: 16px;
 }
 
-.more-card-waste .card-source {
+.more-card-waste .card-source,
+.more-card-budget .card-source {
   margin-top: auto;
+}
+
+.more-copy-detail {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
 .waste-tabs {
@@ -2878,7 +2888,8 @@ html.js .reveal.is-visible {
     grid-template-columns: 1fr;
   }
 
-  .more-card-waste {
+  .more-card-waste,
+  .more-card-budget {
     grid-column: auto;
   }
 
