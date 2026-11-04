@@ -85,6 +85,7 @@ window.I18N = {
         "Região Continental": "Mainland"
       },
       neighborhoodAria: "{name}: {pct}% mapped as flood-prone",
+      rankAria: "{name}: about {pop} residents exposed to flooding",
       tooltip: "<strong>{name}</strong><span>{pct}% flood-prone · ≈{pop} residents</span>",
       contextHigh: "About {pct}% of {name} is mapped as flood-prone — roughly {pop} residents, assuming an even population spread.",
       contextLow: "A small share of {name} ({pct}%) is mapped as flood-prone. About {pop} residents live in those areas, assuming an even population spread."
@@ -178,6 +179,7 @@ window.I18N = {
         "Região Continental": "Continente"
       },
       neighborhoodAria: "{name}: {pct}% mapeado como área inundável",
+      rankAria: "{name}: cerca de {pop} moradores expostos a inundações",
       tooltip: "<strong>{name}</strong><span>{pct}% inundável · ≈{pop} moradores</span>",
       contextHigh: "Cerca de {pct}% de {name} é mapeado como inundável — aproximadamente {pop} moradores, supondo distribuição uniforme da população.",
       contextLow: "Uma pequena parcela de {name} ({pct}%) é mapeada como inundável. Cerca de {pop} moradores vivem nessas áreas, supondo distribuição uniforme."
@@ -587,6 +589,7 @@ window.I18N = {
         "Região Continental": "Continente"
       },
       neighborhoodAria: "{name}: {pct}% mapeado como área inundable",
+      rankAria: "{name}: cerca de {pop} residentes expuestos a inundaciones",
       tooltip: "<strong>{name}</strong><span>{pct}% inundable · ≈{pop} residentes</span>",
       contextHigh: "Alrededor de {pct}% de {name} está mapeado como inundable — aproximadamente {pop} residentes, suponiendo una distribución uniforme de la población.",
       contextLow: "Una pequeña porción de {name} ({pct}%) está mapeada como inundable. Alrededor de {pop} residentes viven en esas áreas, suponiendo una distribución uniforme."

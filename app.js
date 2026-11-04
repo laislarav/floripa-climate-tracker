@@ -837,7 +837,7 @@
       tooltip.style.top = `${nextTop}px`;
     };
 
-    const selectNeighborhood = (name, scrollPanel = false) => {
+    const selectNeighborhood = (name, scrollPanel = false, forceScroll = false) => {
       const bairro = MAP.bairros.find((item) => item.name === name);
       if (!bairro) return;
 
@@ -850,6 +850,14 @@
 
       currentNeighborhood = name;
       select.value = name;
+      if (ranking) {
+        ranking.querySelectorAll(".rank-item").forEach((row) => {
+          const isCurrent = row.dataset.name === name;
+          row.classList.toggle("is-current", isCurrent);
+          if (isCurrent) row.setAttribute("aria-current", "true");
+          else row.removeAttribute("aria-current");
+        });
+      }
       document.getElementById("nb-name").textContent = bairro.name;
       document.getElementById("nb-region").textContent = regionLabel(bairro.region);
       document.getElementById("nb-pct").textContent = `${formatNumber(bairro.floodPct, 1)}%`;
@@ -869,7 +877,7 @@
         .replace("{pop}", people);
       document.getElementById("nb-context").textContent = context;
 
-      if (scrollPanel && window.innerWidth < 980) {
+      if (scrollPanel && (forceScroll || window.innerWidth < 980)) {
         panel.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
       }
     };
@@ -885,6 +893,21 @@
         <span class="rank-value">≈${formatNumber(bairro.floodPop)}</span>
       </div>
     `).join("");
+
+    ranking.querySelectorAll(".rank-item").forEach((row) => {
+      const bairro = MAP.bairros.find((item) => item.name === row.dataset.name);
+      if (!bairro) return;
+      row.setAttribute("role", "button");
+      row.setAttribute("tabindex", "0");
+      row.setAttribute("aria-label", t.map.rankAria.replace("{name}", bairro.name).replace("{pop}", formatNumber(bairro.floodPop)));
+      const activate = () => selectNeighborhood(bairro.name, true, true);
+      row.addEventListener("click", activate);
+      row.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        activate();
+      });
+    });
 
     const axis = document.getElementById("nb-ranking-axis");
     if (axis) {
@@ -906,7 +929,9 @@
         ranking.querySelectorAll(".rank-item").forEach((row) => {
           const bairro = MAP.bairros.find((item) => item.name === row.dataset.name);
           const value = row.querySelector(".rank-value");
-          if (bairro && value) value.textContent = `≈${formatNumber(bairro.floodPop)}`;
+          if (!bairro) return;
+          if (value) value.textContent = `≈${formatNumber(bairro.floodPop)}`;
+          row.setAttribute("aria-label", t.map.rankAria.replace("{name}", bairro.name).replace("{pop}", formatNumber(bairro.floodPop)));
         });
         selectNeighborhood(currentNeighborhood || initial);
       },

@@ -2397,6 +2397,26 @@ html.js .reveal.is-visible {
   gap: 12px;
   align-items: center;
   padding: 9px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.rank-item:hover {
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+}
+
+.rank-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.rank-item.is-current {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.rank-item.is-current .rank-name {
+  color: var(--ink);
 }
 
 .rank-item:last-child {
