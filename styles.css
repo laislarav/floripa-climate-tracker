@@ -2635,14 +2635,31 @@ html.js .reveal.is-visible {
 
 .budget-chip {
   display: flex;
-  flex: 1 1 0;
+  flex: 0 0 auto;
   flex-direction: column;
   justify-content: space-between;
   gap: 6px;
-  min-width: 78px;
+  min-width: 0;
   padding: 9px 10px;
   border-radius: 5px;
   color: var(--ink);
+}
+
+.budget-tail.is-stacked {
+  flex-direction: column;
+}
+
+.budget-tail.is-stacked .budget-chip {
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  width: auto;
+  padding: 8px 10px;
+}
+
+.budget-tail.is-stacked .budget-chip-value {
+  font-size: 1rem;
 }
 
 .budget-chip[data-tone="7"] { background: #A2BFAF; }
@@ -2697,12 +2714,7 @@ html.js .reveal.is-visible {
   }
 
   .budget-tail {
-    flex-wrap: wrap;
-  }
-
-  .budget-chip {
-    flex: 1 1 calc(50% - 4px);
-    min-width: 0;
+    flex-wrap: nowrap;
   }
 
   .budget-tile {

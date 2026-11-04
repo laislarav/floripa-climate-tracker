@@ -1018,7 +1018,7 @@
       column.tiles.push(tile);
     });
 
-    const inset = 1;
+    const inset = 2;
     let x = 0;
     columns.forEach((column) => {
       const columnTotal = column.tiles.reduce((sum, tile) => sum + (Number(tile.dataset.value) || 0), 0);
@@ -1040,16 +1040,46 @@
   };
 
   const layoutBudgetChips = () => {
+    const tail = document.querySelector("[data-budget-tail]");
+    if (!tail) return;
+    const chips = [...tail.querySelectorAll(".budget-chip")];
+    if (!chips.length) return;
     const map = document.querySelector("[data-budget-map]");
-    const chips = [...document.querySelectorAll(".budget-chip")];
-    if (!map || !chips.length) return;
-    const grandTotal = Number(map.dataset.total) || 0;
+    const grandTotal = map ? Number(map.dataset.total) || 0 : 0;
     if (!grandTotal) return;
+
     const percent = budgetPercent();
-    chips.forEach((chip) => {
-      const value = Number(chip.dataset.value) || 0;
+    const values = chips.map((chip) => Number(chip.dataset.value) || 0);
+    const stacked = tail.clientWidth < 520;
+    tail.classList.toggle("is-stacked", stacked);
+
+    if (stacked) {
+      chips.forEach((chip) => {
+        chip.style.width = "";
+      });
+    } else {
+      const gap = 4;
+      const available = tail.clientWidth - gap * (chips.length - 1);
+      const scaled = values.map((value) => Math.pow(value, 0.4));
+      const scaleSum = scaled.reduce((total, value) => total + value, 0) || 1;
+      let widths = scaled.map((value) => (value / scaleSum) * available);
+      const floor = 84;
+      for (let pass = 0; pass < 4; pass += 1) {
+        const deficit = widths.reduce((total, width) => total + Math.max(0, floor - width), 0);
+        if (deficit <= 0) break;
+        const slack = widths.map((width) => Math.max(0, width - floor));
+        const slackSum = slack.reduce((total, width) => total + width, 0);
+        if (!slackSum) break;
+        widths = widths.map((width, index) => Math.max(floor, width - deficit * (slack[index] / slackSum)));
+      }
+      chips.forEach((chip, index) => {
+        chip.style.width = `${widths[index]}px`;
+      });
+    }
+
+    chips.forEach((chip, index) => {
       const element = chip.querySelector(".budget-chip-value");
-      if (element) element.textContent = `${percent.format((value / grandTotal) * 100)}%`;
+      if (element) element.textContent = `${percent.format((values[index] / grandTotal) * 100)}%`;
     });
   };
 
