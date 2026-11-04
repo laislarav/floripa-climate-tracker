@@ -1003,7 +1003,9 @@
     const height = map.clientHeight;
     if (!width || !height) return;
 
-    const total = tiles.reduce((sum, tile) => sum + (Number(tile.dataset.value) || 0), 0) || 1;
+    const values = tiles.map((tile) => Number(tile.dataset.value) || 0);
+    const mapTotal = values.reduce((sum, value) => sum + value, 0) || 1;
+    const grandTotal = Number(map.dataset.total) || mapTotal;
     const percent = budgetPercent();
     const columns = [];
     tiles.forEach((tile) => {
@@ -1020,7 +1022,7 @@
     let x = 0;
     columns.forEach((column) => {
       const columnTotal = column.tiles.reduce((sum, tile) => sum + (Number(tile.dataset.value) || 0), 0);
-      const columnWidth = (columnTotal / total) * width;
+      const columnWidth = (columnTotal / mapTotal) * width;
       let y = 0;
       column.tiles.forEach((tile) => {
         const value = Number(tile.dataset.value) || 0;
@@ -1030,16 +1032,31 @@
         tile.style.width = `${Math.max(0, columnWidth - inset * 2)}px`;
         tile.style.height = `${Math.max(0, tileHeight - inset * 2)}px`;
         const valueElement = tile.querySelector(".budget-tile-value");
-        if (valueElement) valueElement.textContent = `${percent.format((value / total) * 100)}%`;
+        if (valueElement) valueElement.textContent = `${percent.format((value / grandTotal) * 100)}%`;
         y += tileHeight;
       });
       x += columnWidth;
     });
   };
 
+  const layoutBudgetChips = () => {
+    const map = document.querySelector("[data-budget-map]");
+    const chips = [...document.querySelectorAll(".budget-chip")];
+    if (!map || !chips.length) return;
+    const grandTotal = Number(map.dataset.total) || 0;
+    if (!grandTotal) return;
+    const percent = budgetPercent();
+    chips.forEach((chip) => {
+      const value = Number(chip.dataset.value) || 0;
+      const element = chip.querySelector(".budget-chip-value");
+      if (element) element.textContent = `${percent.format((value / grandTotal) * 100)}%`;
+    });
+  };
+
   const layoutBudgetMap = () => {
     const map = document.querySelector("[data-budget-map]");
     if (map) layoutBudgetTiles(map);
+    layoutBudgetChips();
   };
 
   const initBudgetMap = () => {

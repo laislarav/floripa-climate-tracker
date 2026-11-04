@@ -16,9 +16,10 @@ window.I18N = {
       wasteChartOrg: "Organics diverted from landfill as a share of the organic fraction: 13.0% in 2023, 12.9% in 2024 and 14% in 2025. The 2030 target is 90%.",
       wasteChartDry: "Dry recyclables recovered as a share of the dry-recyclable fraction: 10.3% in 2023 and 10.8% in 2024. The 2030 target is 60%.",
       wasteTabs: "Waste fraction",
-      budgetMap: "Treemap of the 2026 municipal budget: public management 27.7%, education 26.1%, health 16.6%, sustainability 10.3%, mobility 7.6%, housing 4.3%, others 7.4%.",
+      budgetMap: "Treemap of the 2026 municipal budget: public management 27.7%, education 26.1%, health 16.6%, sustainability 10.3%, mobility 7.6%, housing 4.3%. The five smallest programs total 7.4%.",
       budgetDetail: "Other programs: legislative 50.0%, public safety 25.6%, culture and sport 14.5%, tourism 8.2%, innovation 1.6%.",
-      budgetBack: "Back to all programs"
+      budgetBack: "Back to all programs",
+      budgetTail: "Remaining programs"
     },
     tooltips: {
       budgetProg109: "Efficiency and public management quality",
@@ -108,9 +109,10 @@ window.I18N = {
       wasteChartOrg: "Orgânicos desviados do aterro como fração dos resíduos orgânicos: 13,0% em 2023, 12,9% em 2024 e 14% em 2025. A meta de 2030 é 90%.",
       wasteChartDry: "Recicláveis secos recuperados como fração dos recicláveis secos: 10,3% em 2023 e 10,8% em 2024. A meta de 2030 é 60%.",
       wasteTabs: "Fração de resíduos",
-      budgetMap: "Treemap do orçamento municipal de 2026: gestão pública 27,7%, educação 26,1%, saúde 16,6%, sustentabilidade 10,3%, mobilidade 7,6%, habitação 4,3%, outros 7,4%.",
+      budgetMap: "Treemap do orçamento municipal de 2026: gestão pública 27,7%, educação 26,1%, saúde 16,6%, sustentabilidade 10,3%, mobilidade 7,6%, habitação 4,3%. Os cinco menores programas somam 7,4%.",
       budgetDetail: "Outros programas: processo legislativo 50,0%, segurança 25,6%, cultura e esporte 14,5%, turismo 8,2%, incentivo à inovação 1,6%.",
-      budgetBack: "Voltar para todos os programas"
+      budgetBack: "Voltar para todos os programas",
+      budgetTail: "Demais programas"
     },
     tooltips: {
       budgetProg109: "Eficiência e qualificação na gestão pública",
@@ -516,9 +518,10 @@ window.I18N = {
       wasteChartOrg: "Orgánicos desviados del relleno como fracción de los residuos orgánicos: 13,0% en 2023, 12,9% en 2024 y 14% en 2025. La meta de 2030 es 90%.",
       wasteChartDry: "Reciclables secos recuperados como fracción de los reciclables secos: 10,3% en 2023 y 10,8% en 2024. La meta de 2030 es 60%.",
       wasteTabs: "Fracción de residuos",
-      budgetMap: "Treemap del presupuesto municipal de 2026: gestión pública 27,7%, educación 26,1%, salud 16,6%, sostenibilidad 10,3%, movilidad 7,6%, vivienda 4,3%, otros 7,4%.",
+      budgetMap: "Treemap del presupuesto municipal de 2026: gestión pública 27,7%, educación 26,1%, salud 16,6%, sostenibilidad 10,3%, movilidad 7,6%, vivienda 4,3%. Los cinco programas más pequeños suman 7,4%.",
       budgetDetail: "Otros programas: proceso legislativo 50,0%, seguridad 25,6%, cultura y deporte 14,5%, turismo 8,2%, incentivo a la innovación 1,6%.",
-      budgetBack: "Volver a todos los programas"
+      budgetBack: "Volver a todos los programas",
+      budgetTail: "Demás programas"
     },
     tooltips: {
       budgetProg109: "Eficiencia y cualificación en la gestión pública",

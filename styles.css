@@ -2530,7 +2530,7 @@ html.js .reveal.is-visible {
   position: relative;
   flex: 1 1 auto;
   width: 100%;
-  min-height: 300px;
+  min-height: 240px;
   margin: 16px 0 0;
 }
 
@@ -2567,17 +2567,27 @@ html.js .reveal.is-visible {
 }
 
 .budget-tile[data-tone="5"] {
-  background: #7C9C89;
+  background: #7FA08D;
   color: var(--ink);
 }
 
 .budget-tile[data-tone="6"] {
-  background: #8FB0A0;
+  background: #93B0A0;
   color: var(--ink);
 }
 
 .budget-tile[data-tone="7"] {
-  background: #A9C2B3;
+  background: #A2BFAF;
+  color: var(--ink);
+}
+
+.budget-tile[data-tone="8"] {
+  background: #B2CBBC;
+  color: var(--ink);
+}
+
+.budget-tile[data-tone="9"] {
+  background: #C2D6C8;
   color: var(--ink);
 }
 
@@ -2616,6 +2626,45 @@ html.js .reveal.is-visible {
   font-variant-numeric: tabular-nums;
 }
 
+.budget-tail {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.budget-chip {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  min-width: 78px;
+  padding: 9px 10px;
+  border-radius: 5px;
+  color: var(--ink);
+}
+
+.budget-chip[data-tone="7"] { background: #A2BFAF; }
+.budget-chip[data-tone="8"] { background: #B2CBBC; }
+.budget-chip[data-tone="9"] { background: #C2D6C8; }
+
+.budget-chip-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+
+.budget-chip-value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
 .budget-tip {
   position: absolute;
   z-index: 10;
@@ -2644,7 +2693,16 @@ html.js .reveal.is-visible {
 
 @media (max-width: 760px) {
   .budget-map {
-    min-height: 400px;
+    min-height: 300px;
+  }
+
+  .budget-tail {
+    flex-wrap: wrap;
+  }
+
+  .budget-chip {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
   }
 
   .budget-tile {
