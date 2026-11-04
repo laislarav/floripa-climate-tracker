@@ -991,6 +991,147 @@
     });
   };
 
+  const budgetPercent = () => new Intl.NumberFormat(languageTag(), {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
+
+  const squarifyBudget = (items, width, height) => {
+    const placed = [];
+    let x = 0;
+    let y = 0;
+    let w = width;
+    let h = height;
+    let start = 0;
+    while (start < items.length) {
+      const shortSide = Math.min(w, h);
+      const worst = (areas) => {
+        const sum = areas.reduce((total, area) => total + area, 0);
+        const max = Math.max(...areas);
+        const min = Math.min(...areas);
+        return Math.max(
+          (shortSide * shortSide * max) / (sum * sum),
+          (sum * sum) / (shortSide * shortSide * min),
+        );
+      };
+      let current = [items[start].area];
+      let rowArea = items[start].area;
+      let end = start + 1;
+      while (end < items.length) {
+        const next = current.concat(items[end].area);
+        if (worst(next) > worst(current)) break;
+        current = next;
+        rowArea += items[end].area;
+        end += 1;
+      }
+      if (w >= h) {
+        const rowWidth = rowArea / h;
+        let offset = y;
+        for (let index = start; index < end; index += 1) {
+          const itemHeight = items[index].area / rowWidth;
+          placed.push({ index: items[index].index, x, y: offset, w: rowWidth, h: itemHeight });
+          offset += itemHeight;
+        }
+        x += rowWidth;
+        w -= rowWidth;
+      } else {
+        const rowHeight = rowArea / w;
+        let offset = x;
+        for (let index = start; index < end; index += 1) {
+          const itemWidth = items[index].area / rowHeight;
+          placed.push({ index: items[index].index, x: offset, y, w: itemWidth, h: rowHeight });
+          offset += itemWidth;
+        }
+        y += rowHeight;
+        h -= rowHeight;
+      }
+      start = end;
+    }
+    return placed;
+  };
+
+  const layoutBudgetMap = () => {
+    const map = document.querySelector("[data-budget-map]");
+    if (!map) return;
+    const tiles = [...map.querySelectorAll(".budget-tile")];
+    if (!tiles.length) return;
+    const width = map.clientWidth;
+    const height = map.clientHeight;
+    if (!width || !height) return;
+
+    const values = tiles.map((tile) => Number(tile.dataset.value) || 0);
+    const total = values.reduce((sum, value) => sum + value, 0) || 1;
+    const percent = budgetPercent();
+    const items = values
+      .map((value, index) => ({ index, area: (value / total) * width * height }))
+      .sort((a, b) => b.area - a.area);
+
+    squarifyBudget(items, width, height).forEach(({ index, x, y, w, h }) => {
+      const tile = tiles[index];
+      const inset = 1.5;
+      const tileWidth = Math.max(0, w - inset * 2);
+      const tileHeight = Math.max(0, h - inset * 2);
+      tile.style.left = `${x + inset}px`;
+      tile.style.top = `${y + inset}px`;
+      tile.style.width = `${tileWidth}px`;
+      tile.style.height = `${tileHeight}px`;
+      const value = tile.querySelector(".budget-tile-value");
+      if (value) value.textContent = `${percent.format((values[index] / total) * 100)}%`;
+      tile.classList.toggle("is-compact", tileWidth < 96 || tileHeight < 54);
+      tile.classList.toggle("is-tiny", tileWidth < 60 || tileHeight < 34);
+    });
+  };
+
+  const initBudgetMap = () => {
+    layoutBudgetMap();
+    let timer = 0;
+    window.addEventListener("resize", () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(layoutBudgetMap, 120);
+    });
+
+    const card = document.querySelector(".more-card-budget");
+    const tip = card ? card.querySelector(".budget-tip") : null;
+    if (!card || !tip) return;
+
+    let hideTimer = 0;
+    const hideTip = () => {
+      tip.classList.remove("is-visible");
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(() => {
+        if (!tip.classList.contains("is-visible")) tip.hidden = true;
+      }, 180);
+    };
+
+    const showTip = (tile) => {
+      const text = tile.dataset.tooltip;
+      if (!text) return;
+      window.clearTimeout(hideTimer);
+      tip.textContent = text;
+      tip.hidden = false;
+      tip.classList.remove("is-visible");
+      const cardRect = card.getBoundingClientRect();
+      const tileRect = tile.getBoundingClientRect();
+      const tipRect = tip.getBoundingClientRect();
+      const maxLeft = cardRect.width - tipRect.width - 8;
+      let left = tileRect.left - cardRect.left + tileRect.width / 2 - tipRect.width / 2;
+      left = Math.max(8, Math.min(left, Math.max(8, maxLeft)));
+      let top = tileRect.top - cardRect.top - tipRect.height - 6;
+      if (top < 4) top = tileRect.bottom - cardRect.top + 6;
+      tip.style.left = `${left}px`;
+      tip.style.top = `${top}px`;
+      requestAnimationFrame(() => tip.classList.add("is-visible"));
+    };
+
+    card.querySelectorAll(".budget-tile").forEach((tile) => {
+      tile.addEventListener("mouseenter", () => showTip(tile));
+      tile.addEventListener("mouseleave", hideTip);
+      tile.addEventListener("focus", () => showTip(tile));
+      tile.addEventListener("blur", hideTip);
+    });
+    window.addEventListener("scroll", hideTip, { passive: true });
+  };
+
   const initReveal = () => {
     const elements = document.querySelectorAll(".reveal");
     if (reduceMotion) {
@@ -1018,6 +1159,7 @@
     } catch (error) {}
   }
   createCharts();
+  initBudgetMap();
   initBikeSplit();
   initWasteTabs();
   mapController = initMap();
@@ -1037,5 +1179,6 @@
       history.replaceState(null, "", url);
     } catch (error) {}
     applyLanguage(lang, true);
+    layoutBudgetMap();
   });
 })();

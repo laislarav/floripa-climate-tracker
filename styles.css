@@ -2467,6 +2467,10 @@ html.js .reveal.is-visible {
   grid-column: span 3;
 }
 
+.more-card-budget {
+  position: relative;
+}
+
 .more-card {
   display: flex;
   flex-direction: column;
@@ -2514,11 +2518,105 @@ html.js .reveal.is-visible {
   margin-top: auto;
 }
 
-.more-copy-detail {
-  margin-top: 10px;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--muted);
+.budget-map {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  margin: 18px 0 0;
+}
+
+.budget-tile {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: default;
+  overflow: visible;
+}
+
+.budget-tile[data-tone="deep"] {
+  background: var(--forest);
+  color: #F7F1E6;
+}
+
+.budget-tile[data-tone="light"] {
+  background: #BFD1C6;
+  color: var(--ink);
+}
+
+.budget-tile:hover,
+.budget-tile:focus-visible {
+  z-index: 3;
+  outline: none;
+}
+
+.budget-tile:focus-visible {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+.budget-tile-label {
+  max-width: 100%;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.budget-tile-value {
+  align-self: flex-end;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.45vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.budget-tile.is-compact .budget-tile-label {
+  display: none;
+}
+
+.budget-tile.is-tiny .budget-tile-label,
+.budget-tile.is-tiny .budget-tile-value {
+  display: none;
+}
+
+.budget-tip {
+  position: absolute;
+  z-index: 10;
+  max-width: 240px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--surface);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-align: left;
+  text-wrap: pretty;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  pointer-events: none;
+}
+
+.budget-tip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 760px) {
+  .budget-map {
+    height: 360px;
+  }
 }
 
 .waste-tabs {
